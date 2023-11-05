@@ -43,8 +43,14 @@ def grocerList(request):
     return render(request, "tracker/grocerList.html", {
         'grocerlist':GroceryStore.objects.all()
     })
-    pass
 def groceryPurchase(request):
     return render(request, "tracker/addPurchase.html", {})
 def compareGrocers(request):
-    pass
+    common = []
+    for i in grocerList:
+        for j in grocerList:
+            if grocerList[i] == grocerList[j]:
+                common.append(grocerList[i])
+
+    g1 = list(set(grocerList) - set(common))
+    g2 = list(set(grocerList) - set(common))
