@@ -1,3 +1,13 @@
 .bg-brown{
-    background-color: beige;
+    background-color: #938064;
+}
+.nav-color{
+    background-color: #ffe1b4;
+}
+.nav-button{
+    border: none;
+    background: none;
+}
+.nav-size{
+    font-size: 1.5rem;
 }

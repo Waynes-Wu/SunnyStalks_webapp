@@ -18,29 +18,41 @@
 
 
 <body class="bg-brown">
-    <nav class="navbar navbar-expand-lg bg-light mb-2">
-        <div class="container-fluid d-flex justify-content-end">
+    <nav class="navbar navbar-expand-lg nav-color mb-2 px-2">
+        <div class="d-flex justify-content-between" style="width:100%">
             <a class="navbar-brand">
-                <img src="{% static 'images/logo.jpg' %}" alt="" width="30" height="30"
-                    class="d-inline-block align-text-top">
-                <span>Sunny Stalks</span>
+            <img src="{% static 'images/logo.jpg' %}" alt="" width="30" height="30"
+                class="d-inline-block align-text-top">
+            <span class="fw-bold nav-size">Sunny Stalks</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <!--
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
+                <div class="navbar-nav me-auto mb-2 mb-lg-0 d-flex flex-row justify-content-center">
+                    <div class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link">compare|grocer</a>
-                    </li>
-                </ul>
-            </div>
+                    </div>
+                    <div class="nav-item">
+                        <button class="nav-button nav-link text-dark">Grocers</button>
+                    </div>
+                    <div class="nav-item mt-2">
+                        <a> | </a>
+                    </div>
+                    <div class="nav-item">
+                        <button class="nav-button nav-link text-dark">Compare</button>
+                    </div>
+                </div>
+            </div>-->
+            <div class="nav-item p-2 nav-size"><a class="nav-link active fw-bold " aria-current="page" href="#">Home</a></div>
+            <div class="d-flex flex-row d-flex flex-row align-items-center" id="navbarSupportedContent">
+                    <span class="nav-item p-2"><button class="nav-button nav-link text-dark">Grocers</button></span>
+                    <span class="nav-item p-2"> | </span>
+                    <span class="nav-item p-2"><button class="nav-button nav-link text-dark">Compare</button></span>
+              </div>
         </div>
     </nav>
     {% block contentArea %}
