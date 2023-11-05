@@ -14,9 +14,8 @@ def addGrocer(request):
         # ! we need data validation 
 
         # ! try catch saving database entry
-        store = GroceryStore(name = store_name)
-        branch = Branch(address = branch_name, costs = costs)
-        store.branch = branch
+        store = GroceryStore(name = 'name')
+        branch = Branch(address = 'name', grocery_store = store)
 
         branch.save()
         store.save()
@@ -38,7 +37,7 @@ def editGrocer(request, id):
         'grocer' : toBeEdited,
         'edit' : True
     })
-    
+                                                                            
 def grocerList(request):
     return render(request, "tracker/grocerList.html", {
         'grocerlist':GroceryStore.objects.all()
