@@ -14,7 +14,7 @@ class GroceryStore(models.Model):
 class Branch(models.Model):
     address = models.CharField(max_length=255)
     grocery_store = models.ForeignKey(GroceryStore, on_delete=models.CASCADE, related_name='branches')
-    items = models.ManyToManyField('Item', related_name='branches', blank=True)
+    items = models.ManyToManyField('Item', related_name='seller', blank=True)
 
     def getCosts(self):
         return self.purchases.all().mean()
