@@ -15,22 +15,19 @@ Add Grocer
         </div>
         <div>
 
-            <!-- ADD -->
-            <!-- checkbox if storename exists -->
             <form action="{% url 'addGrocer' %}" method="post">
                 {% csrf_token %}
                 <label for="store_name">Store name:</label>
-                <input type="text" name="store_name" id="store_name">
+                <input type="text" name="store_name" id="store_name" value="{{grocer.name}}">
         
                 <label for="branch_address">Branch address:</label>
-                <input type="text" name="branch_address" id="branch_address">
+                <input type="text" name="branch_address" id="branch_address" value="{{grocer.branch.address}}">
         
                 <label for="costs">Branch costs:</label>
-                <input type="number" name="costs" id="costs">
+                <input type="number" name="costs" id="costs" value="{{grocer.branch.costs}}">
         
                 <input type="submit" value="Submit">
             </form>
-
 
         </div>        
     </div>
