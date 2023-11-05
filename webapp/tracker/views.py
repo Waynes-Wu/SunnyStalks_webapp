@@ -9,13 +9,12 @@ def addGrocer(request):
     if request.method == 'POST':
         store_name = request.method['store_name']
         branch_name = request.method['branch_address']
-        costs = request.method['costs']
 
         # ! we need data validation 
 
         # ! try catch saving database entry
-        store = GroceryStore(name = 'name')
-        branch = Branch(address = 'name', grocery_store = store)
+        store = GroceryStore(name = store_name)
+        branch = Branch(address = branch_name, grocery_store = store)
 
         branch.save()
         store.save()
@@ -44,6 +43,7 @@ def grocerList(request):
     })
 def groceryPurchase(request):
     return render(request, "tracker/addPurchase.html", {})
+
 def compareGrocers(request):
     common = []
     for i in grocerList:
