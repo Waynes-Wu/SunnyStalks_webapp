@@ -7,35 +7,55 @@ def index(request):
     return render(request, "tracker/index.html", {})
 def addGrocer(request):
     if request.method == 'POST':
-        store_name = request.method['store_name']
-        branch_name = request.method['branch_address']
+        store_name = request.POST.get('store_name')
+        branch_name = request.POST.get('branch_address')
+        branch_image = request.FILES.get('branch_image')
 
         # ! we need data validation 
-
         # ! try catch saving database entry
-        store = GroceryStore(name = store_name)
-        branch = Branch(address = branch_name, grocery_store = store)
 
+        store, created = GroceryStore.objects.get_or_create(name=store_name)
+        branch = Branch(address = branch_name, grocery_store = store, image = branch_image)
+        
         branch.save()
-        store.save()
+        if created:
+            store.save()
         return HttpResponseRedirect(reverse('allGrocer'))
     else:
-        return render(request, "tracker/addGrocer.html", {
+        # request.method = GET
+        return render(request, "tracker/Grocer-add_edit.html", {
             'edit' : False
         })
 def editGrocer(request, id):
     # we need to get data of a specific 
-    # 
-    toBeEdited = GroceryStore.objects.get(pk = id)
-    # ! check if exists (if not use try catch)
+    
+    if request.method == 'POST':
+        store_name = request.POST.get('store_name')
+        branch_name = request.POST.get('branch_address')
+        branch_image = request.FILES.get('branch_image')
+        branch_id = request.POST.get('id')
 
-    # * assuming it exists for now
+        branch = Branch.objects.get(pk = branch_id)
+        branch.address = branch_name
+        branch.grocery_store.name = store_name
 
+        if branch_image is not None:
+            branch.image = branch_image
 
-    return render(request, "tracker/addGrocer.html", {
-        'grocer' : toBeEdited,
-        'edit' : True
-    })
+        branch.save()
+        branch.grocery_store.save()
+
+        # ! redirect to idk
+        return HttpResponseRedirect(reverse('allGrocer'))
+
+    else:
+        toBeEdited = Branch.objects.get(pk = id)
+        # ! check if exists (if not use try catch)
+
+        return render(request, "tracker/Grocer-add_edit.html", {
+            'branch' : toBeEdited,
+            'edit' : True
+        })
                                                                             
 def grocerList(request):
     return render(request, "tracker/grocerList.html", {

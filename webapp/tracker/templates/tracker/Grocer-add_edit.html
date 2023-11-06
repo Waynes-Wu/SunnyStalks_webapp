@@ -1,0 +1,53 @@
+{% extends 'tracker/base.html' %}
+{% load static %}
+
+{% block title %}
+Add Grocer
+{% endblock %}
+
+
+{% block contentArea %}
+
+<div class="container-lg bg-white">lmaolmao
+    <div class="d-flex justify-content-evenly">
+
+        <div class="mb-2">
+        {% if  branch.image %}
+            <img width="75" src="{{ branch.image.url }}" alt="">
+        {% else %}
+            <img width="75" src="{% static 'images/image_placeholder.png' %}" alt="">
+        {% endif %}
+        </div>
+
+        <div>
+
+            <form action="{{ request.path }}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                {% if branch %}
+                    <input type="hidden" name="id" value="{{ branch.id }}">
+                {% endif%}
+
+                <div class="mb-3">
+                    <label for="store_name" class="form-label">Store name:</label>
+                    <input type="text" name="store_name" id="store_name" class="form-control" value="{{ branch.grocery_store.name }}" >
+                </div>
+                <div class="mb-3">
+                    <label for="branch_address" class="form-label">Branch address:</label>
+                    <input type="text" name="branch_address" id="branch_address" class="form-control" value="{{ branch.address }}" >
+                </div>
+                <div class="mb-3">
+                    <label for="branch_image" class="form-label">Picture: </label>
+                    <input type="file" name="branch_image" id="branch_image" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
