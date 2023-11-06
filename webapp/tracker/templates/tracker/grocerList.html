@@ -10,7 +10,12 @@ Grocer List
 <div class="container d-flex">
     {% for grocer in grocerlist %}
         <div class="w-80">
+            {% if grocer.logo %}
+            <img src="{{grocer.logo.url}}" alt="" width="75" class="img-fluid rounded-start">
+            {% else %}
             <img src="{% static 'images/image_placeholder.png' %}" alt="" class="img-fluid rounded-start">
+            {% endif %}
+            
             <div>{{grocer.name}}</div>
             <div>
                 <button>edit</button>

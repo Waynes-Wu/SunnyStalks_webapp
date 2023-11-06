@@ -7,6 +7,7 @@ class User(AbstractUser):
 
 class GroceryStore(models.Model):
     name = models.CharField(max_length=255)
+    logo = models.ImageField(upload_to='grocery_store_images/', blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -15,7 +16,8 @@ class Branch(models.Model):
     address = models.CharField(max_length=255)
     grocery_store = models.ForeignKey(GroceryStore, on_delete=models.CASCADE, related_name='branches')
     items = models.ManyToManyField('Item', related_name='seller', blank=True)
-
+    image = models.ImageField(upload_to='branch_images/', blank=True, null=True)
+    
     def getCosts(self):
         return self.purchases.all().mean()
     
