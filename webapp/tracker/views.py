@@ -42,6 +42,8 @@ def grocerList(request):
     return render(request, "tracker/grocerList.html", {
         'grocerlist':GroceryStore.objects.all()
     })
+def grocerDetails(request):
+    pass
 def groceryPurchase(request):
     return render(request, "tracker/addPurchase.html", {})
 def compareGrocers(request):

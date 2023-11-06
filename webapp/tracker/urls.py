@@ -7,6 +7,7 @@ urlpatterns = [
     path("grocer/add",views.addGrocer, name='addGrocer'),
     path("edit/<int:id>",views.editGrocer, name='editGrocer'),
     path("grocer/all",views.grocerList, name='allGrocer'),
+    path("grocer/details",views.grocerDetails, name = 'detailsGrocer'),
     path("purchase/add",views.groceryPurchase, name='addPurchase'),
     path("compare",views.compareGrocers, name='compare'),
 ]
