@@ -8,6 +8,47 @@ Record Purchase
 {% block contentArea %}
 <!--  put ur stufff here  -->
 
+<div class="container-lg bg-white">
+    <div class="d-flex justify-content-evenly">
+        <div>
+            <img src="{% static 'images/image_placeholder.png' %}" alt="">
+        </div>
+        <div>
+            <!-- checkbox if storename exists -->
+            <form action="{% url 'addGrocer' %}" method="post">
+                {% csrf_token %}
+                <!-- dropdown for all stores -->
+                <label for="store_name">Choose store:</label> 
+                <input type="select" name="store_name" id="store_name">
 
+                <!-- dropdown for all branches sa chosen store-->
+                <label for="store_branch">Choose branch:</label> 
+                <input type="select" name="store_branch" id="store_branch">
+                <br><br>
+
+                Add Item:<br>
+                <label for="item">Item:</label>
+                <input type="text" name="item" id="item">
+
+                <label for="price">Price:</label>
+                <input type="number" name="price" id="price">
+                <br>
+
+                <label for="brand">Brand:</label>
+                <input type="text" name="brand" id="brand">
+        
+                <label for="weight">Weight/Volume:</label>
+                <input type="number" name="weight" id="weight">
+                <br>
+
+                <label for="travexp">Travel Expenses: [optional]</label>
+                <input type="number" name="travexp" id="travexp">
+        
+                <input type="submit" value="Submit">
+            </form>
+
+        </div>        
+    </div>
+</div>
 
 {% endblock %}
