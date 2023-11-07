@@ -1,0 +1,40 @@
+{% extends 'tracker/base.html' %}
+{% load static %}
+
+{% block title %}
+Grocer List
+{% endblock %}
+
+
+{% block contentArea %}
+<div class="container w-75 mb-2 mx-auto bg-white">
+    {% for branch in grocerlist %}
+    <div class="grocer-card row">
+
+        <div class="grocer-logo col-2">
+            {% if branch.image %}
+            <img width="75" src="{{ branch.image.url }}" alt="">
+            {% else %}
+            <img width="75" src="{% static 'images/image_placeholder.png' %}" alt="">
+            {% endif %}
+        </div>
+
+        <div class="grocer-details col-8">
+            {{ branch.grocery_store.name|upper}} {{ branch.address }}
+            ---------------------------------------
+            a
+            b
+            c
+        </div>
+
+        <div class="grocer-actions col-2">
+            <a href="" class="btn btn-primary">Edit</a>
+            <a href="" class="btn btn-danger">Delete</a>
+        </div>
+
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

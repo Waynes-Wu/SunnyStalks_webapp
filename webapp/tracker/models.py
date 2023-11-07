@@ -29,9 +29,11 @@ class Item(models.Model):
     name = models.CharField(max_length=255)
     brand = models.CharField(max_length=255)
     weight = models.DecimalField(max_digits=10, decimal_places=2)
+    image = models.ImageField(upload_to='item_images/', blank=True, null=True)
 
     def __str__(self):
         return f'[{self.brand}] - {self.name} ({self.weight} grams)'
+    
 class PurchaseHistory(models.Model):
     date = models.DateField(auto_now_add=True)
     travel_expense = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)

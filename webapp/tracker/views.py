@@ -58,8 +58,8 @@ def editGrocer(request, id):
         })
                                                                             
 def grocerList(request):
-    return render(request, "tracker/grocerList.html", {
-        'grocerlist':GroceryStore.objects.all()
+    return render(request, "tracker/list_view/Grocer-list.html", {
+        'grocerlist':Branch.objects.all()
     })
 def groceryPurchase(request):
     return render(request, "tracker/addPurchase.html", {})
