@@ -20,11 +20,13 @@ Grocer List
         </div>
 
         <div class="grocer-details col-8">
-            {{ branch.grocery_store.name|upper}} {{ branch.address }}
+            <div>[{{ branch.grocery_store.name|upper}}] {{ branch.address }}</div>
             ---------------------------------------
-            a
-            b
-            c
+            <div>
+                a
+                b
+                c    
+            </div>
         </div>
 
         <div class="grocer-actions col-2">
