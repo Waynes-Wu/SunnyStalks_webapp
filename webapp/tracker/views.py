@@ -55,15 +55,13 @@ def editGrocer(request, id):
         return render(request, "tracker/Grocer-add_edit.html", {
             'branch' : toBeEdited,
             'edit' : True
-        })
-                                                                            
+        })                                                          
 def grocerList(request):
     return render(request, "tracker/list_view/Grocer-list.html", {
         'grocerlist':Branch.objects.all()
     })
 def groceryPurchase(request):
     return render(request, "tracker/addPurchase.html", {})
-
 def compareGrocers(request):
     common = []
     for i in grocerList:
