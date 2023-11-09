@@ -34,6 +34,7 @@ AUTH_USER_MODEL = 'tracker.User'
 # Application definition
 
 INSTALLED_APPS = [
+    'fontawesomefree',
     'tracker.apps.TrackerConfig',
     'django.contrib.admin',
     'django.contrib.auth',
