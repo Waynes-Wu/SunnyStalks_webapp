@@ -11,7 +11,7 @@ Add Grocer
 
 {% block contentArea %}
 
-<div class="container-lg rounded-border" style = "width: 870px; height: 310px">
+<div class="container-lg rounded-border-groceradd">
     <div class="d-flex justify-content-evenly">
 
         <div class="mb-2">
@@ -32,15 +32,14 @@ Add Grocer
                 {% endif%}
 
                 <div class="mb-3">
-                    <label for="store_name" class="form-label">Store name:</label>
-                    <input type="text" name="store_name" id="store_name" class="form-control" value="{{ branch.grocery_store.name }}" >
+                    <input type="text" name="store_name" id="store_name" class="form-control font-inter-placeholder" value="{{ branch.grocery_store.name }}" placeholder="Store Name" style="font-size: 25.13px;">
                 </div>
                 <div class="mb-3">
-                    <label for="branch_address" class="form-label">Branch address:</label>
-                    <input type="text" name="branch_address" id="branch_address" class="form-control" value="{{ branch.address }}" >
+                    <label for="branch_address" class="form-label font-inter-label">Branch Address:</label>
+                    <input type="text" name="branch_address" id="branch_address" class="form-control font-inter-placeholder" value="{{ branch.address }}" placeholder="Branch Address">
                 </div>
                 <div class="mb-3">
-                    <label for="branch_image" class="form-label">Picture: </label>
+                    <label for="branch_image" class="form-label font-inter-label">Picture:</label>
                     <input type="file" name="branch_image" id="branch_image" class="form-control">
                 </div>
                 <div class="mb-3">

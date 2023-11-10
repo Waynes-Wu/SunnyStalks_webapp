@@ -16,30 +16,54 @@
 .nav-title{
     color: #513012;
 }
-.font-inter{
+.font-inter-nav{
     font-size: 36px;
     font-family: Inter;
     font-weight: 800;
     text-align: bottom;
 }
+.font-inter-placeholder{
+    font-size: 13.66px;
+    font-family: Inter;
+    font-weight: 400;
+    color: #9B9B9B;
+    background-color: #D9D9D9;
+
+}
+.font-inter-label{
+    font-size: 16.75px;
+    font-family: Inter;
+    font-weight: 700;
+}
 /* ---------------- */
 
+.grocer-card{
+    width: 1440px;
+    height: 350px;
+    top: 282px;
+    left: 241px;
+}
 .grocer-logo{
     background-color: #FDE0B6;
-    border-radius: 25% 0 0 25% ;
+    border-radius: 40px 0px 0px 40px;
+    width: 40%;
 }
 .grocer-logo img{
     max-width: 100%;
     margin: auto;
     display: block;
-    width: 100px;
+    width: 347.13px;
+    height: 265.26px;
 }
 .grocer-details{
+    width: 40%;
     background-color: #FDE0B6;
 }
 .grocer-actions{
     background-color: #5B4B35;
-    border-radius: 0 25% 25% 0;
+    border-radius: 0px 40px 40px 0px;
+    width: 110px;
+    height: 350.74px;
 }
 
 /* -----basket----- */
@@ -97,7 +121,7 @@
     color: #938064;
 
 }
-.rounded-border{
+.rounded-border-groceradd{
     border-radius:40px; 
     padding: 35px; 
     margin: 0; 
@@ -107,4 +131,14 @@
     -ms-transform: translate(-50%,-50%); 
     transform: translate(-50%, -50%);
     background-color: white;
+    width: 870px; 
+    height: 310px;
+}
+
+.rounded-border-grocerlist{
+    border-radius:40px; 
+    padding: 35px; 
+    margin-top: 48px;
+    background-color: white;
+    width: 1671px;
 }
