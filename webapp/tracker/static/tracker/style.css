@@ -53,6 +53,14 @@
     line-height: 39px;
     letter-spacing: 0em;
 }
+.font-inter-popup{
+    font-size: 22px;
+    font-family: Inter;
+    font-weight: 400;
+    line-height: 27px;
+    letter-spacing: 0em;
+    text-align: center;
+}
 /* ---------------- */
 
 .grocer-card{
@@ -88,8 +96,8 @@
     align-items: center;
 }
 .grocer-action-buttons{
-    width: 75px;
-    height: 75px;
+    width: 73px;
+    height: 73px;
     border-radius: 10px;
 }
 
@@ -122,13 +130,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #007BFF;
+    background-color: #5DA365;
     color: #fff;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    border-radius: 10px;
+    width: 87px;
+    height: 87px;
     text-decoration: none;
-    font-size: 24px;
+    font-size: 64px;
     transition: background-color 0.2s;
 }
 
@@ -169,3 +177,63 @@
     background-color: white;
     width: 1671px;
 }
+
+/* Popup container - can be anything you want */
+.popup {
+    position: fixed;
+    bottom: 40px;
+    right: 180px;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* The actual popup */
+  .popup .popuptext {
+    visibility: hidden;
+    width: 119px;
+    height: 63px;
+    background-color: white;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+    box-shadow: 2px 2px 5px;
+  }
+  
+  /* Popup arrow */
+  .popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 40%;
+    left: 100%;
+    margin-left: 0px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+    rotate: 270deg;
+  }
+  /* Toggle this class - hide and show the popup */
+  .popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+  }
+  
+  /* Add animation (fade in the popup) */
+  @-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+  }
+  
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+  }
