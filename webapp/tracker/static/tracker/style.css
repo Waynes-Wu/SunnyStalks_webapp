@@ -1,7 +1,7 @@
 @font-face {
     font-family: Inter;
     src: url(/static/tracker/fonts/inter/Inter-V.ttf);
-  }
+}
 @font-face {
     font-family: Mandali;
     src: url(/static/tracker/fonts/mandali/Mandali-Regular.ttf);
@@ -46,7 +46,9 @@
 .basket, .purchases{
     background-color: #856F50;
 }
-
+.bg-gray{
+    background-color: #D9D9D9;
+}
 
 /* ---------------- */
 .fab-list {
