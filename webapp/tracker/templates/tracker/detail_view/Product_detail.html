@@ -5,6 +5,10 @@
 item detail
 {% endblock %}
 
+{% block nav %}
+Item Profile
+{% endblock %}
+
 {% block contentArea %}
 <ul class="fab-list">
     <li><i data-action = "{% url 'editProduct' item.id %}" class="fa-regular fa-pen-to-square" title = "Edit"></i></li>

@@ -58,8 +58,11 @@ def editGrocer(request, id):
             'edit' : True
         })                                                          
 def grocerList(request):
+    branch = Branch.objects.all()
+
+
     return render(request, "tracker/list_view/Grocer-list.html", {
-        'grocerlist':Branch.objects.all()
+        'grocerlist': branch
     })
 def grocerDetail(request, id):
     branch = Branch.objects.get(pk=id)
