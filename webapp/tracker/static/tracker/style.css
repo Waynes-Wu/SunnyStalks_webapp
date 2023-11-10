@@ -33,12 +33,18 @@
     font-size: 16.75px;
     font-family: Inter;
     font-weight: 700;
+    display: flex;
+    justify-content: center;
 }
 .font-inter-grocer{
     font-size: 48px;
     line-height: 58px;
     text-align: center;
-    color: black;
+    margin: 20px 0px 20px 0px;
+    white-space: nowrap;
+    width: 500px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .font-inter-grocerdetails{
     font-size: 32px;
@@ -46,40 +52,45 @@
     font-weight: 700;
     line-height: 39px;
     letter-spacing: 0em;
-    color: black;
 }
 /* ---------------- */
 
 .grocer-card{
-    width: 1440px;
     height: 350px;
-    top: 282px;
-    left: 241px;
+    display: flex;
 }
 .grocer-logo{
     background-color: #FDE0B6;
     border-radius: 40px 0px 0px 40px;
-    width: 30%;
     display: flex;
+    flex: 6;
     align-items: center;
     justify-content: center;
 }
 .grocer-logo img{
-    max-width: 100%;
-    margin: auto;
-    display: block;
+    margin: 50px;
     width: 347.13px;
     height: 265.26px;
+    border-radius:20px; 
 }
 .grocer-details{
-    width: 40%;
+    flex: 14;
+    padding: 20px;
     background-color: #FDE0B6;
 }
 .grocer-actions{
     background-color: #5B4B35;
     border-radius: 0px 40px 40px 0px;
-    width: 110px;
-    height: 350.74px;
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.grocer-action-buttons{
+    width: 75px;
+    height: 75px;
+    border-radius: 10px;
 }
 
 /* -----basket----- */
