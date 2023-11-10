@@ -1,15 +1,26 @@
+@font-face {
+    font-family: Inter;
+    src: url(/static/tracker/fonts/inter/Inter-V.ttf);
+  }
+@font-face {
+    font-family: Mandali;
+    src: url(/static/tracker/fonts/mandali/Mandali-Regular.ttf);
+}
 .bg-brown{
     background-color: #938064;
 }
-.nav-color{
+.nav-body{
     background-color: #ffe1b4;
+    height: 89px;
 }
-.nav-button{
-    border: none;
-    background: none;
+.nav-title{
+    color: #513012;
 }
-.nav-size{
-    font-size: 1.5rem;
+.font-inter{
+    font-size: 36px;
+    font-family: Inter;
+    font-weight: 800;
+    text-align: bottom;
 }
 /* ---------------- */
 
@@ -71,4 +82,16 @@
 .fab-list i:hover {
     background-color: #0056b3;
     cursor: pointer;
+}
+.font-mandali{
+    font-size: 24px;
+    font-family: Mandali;
+    font-weight: 400;
+    text-align: center;
+}
+.separator{
+    border-width: 0px 2px 0px 0px;
+    border-style: solid;
+    color: #938064;
+
 }
