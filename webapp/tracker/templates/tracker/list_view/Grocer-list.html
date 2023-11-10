@@ -32,19 +32,19 @@ Grocer List
             </a>
         </div>
 
-        <div class="grocer-details">
-            <a href="{% url 'grocerDetail' branch.id %}">
+        <div class="grocer-details font-inter-grocerdetails pt-4">
+            <a href="{% url 'grocerDetail' branch.id %}" class="font-inter-grocer">
                 [{{ branch.grocery_store.name|upper}}] {{ branch.address }}
             </a>
-            ---------------------------------------
+            <hr>
             <div>Overall Cost:</div>
             <div>Travel Cost:</div>
             <div>Efficiency:</div>
             <div>Popularity:</div>
         </div>
 
-        <div class="grocer-actions">
-            <a href="{% url 'editGrocer' branch.id %}" class="btn btn-primary">Edit</a>
+        <div class="grocer-actions pt-4">
+            <a href="{% url 'editGrocer' branch.id %}" class="btn btn-primary mb-4">Edit</a>
             <a href="" class="btn btn-danger">Delete</a>
         </div>
 
