@@ -8,10 +8,10 @@ item detail
 {% block contentArea %}
 
 <img src="" alt="">
-<div>canned sardines</div>
+<div>{{ item.name }}</div>
 <div>-----------</div>
-<div>Brand</div>
-<div>Weight</div>
+<div>Brand: {{ item.brand }}</div>
+<div>Weight: {{ item.weight }} g</div>
 <div>Average Price {{ price_avg }} </div>
 <div>Lowest Price {{ price_min }}</div>
 <div>Times Purchased: {{ timesBought }}</div>

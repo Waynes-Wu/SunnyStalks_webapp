@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from django.db.models import Avg
+from django.db.models import Min, Avg, Count
 
 class User(AbstractUser):
     def __str__(self):
@@ -35,6 +35,14 @@ class Item(models.Model):
 
     def __str__(self):
         return f'[{self.brand}] - {self.name} ({self.weight} grams)'
+    
+    def getData(self):
+        all_sold_history = PurchaseItems.objects.filter(item=self)
+        data = all_sold_history.aggregate(lowest=Min('price'), avg=Avg('price'), count=Count('id'))
+        lowest_price = data.get('lowest')
+        avg_price = data.get('avg')
+        times_bought = data.get('count')
+        return {'lowest_price': lowest_price, 'avg_price': avg_price, 'times_bought': times_bought}
     
 class PurchaseHistory(models.Model):
     date = models.DateField(auto_now_add=True)

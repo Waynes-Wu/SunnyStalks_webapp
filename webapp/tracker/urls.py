@@ -6,11 +6,16 @@ from django.conf import settings
 urlpatterns = [
     path("", views.index, name="index"),
     path("grocer/add",views.addGrocer, name='addGrocer'),
-    path("edit/<int:id>",views.editGrocer, name='editGrocer'),
+    path("grocer/edit/<int:id>",views.editGrocer, name='editGrocer'),
     path("grocer/all",views.grocerList, name='allGrocer'),
+    path("grocer/<int:id>",views.grocerDetail, name='grocerDetail'),
+
     path("purchase/add",views.groceryPurchase, name='addPurchase'),
     path("compare",views.compareGrocers, name='compare'),
-    path("grocer/<int:id>",views.grocerDetail, name='grocerDetail'),
+
+    path("item/add",views.addProduct, name='addProduct'),
+    path("item/edit/<int:id>",views.editProduct, name='editProduct'),
+    path("item/all",views.itemList, name='allItems'),
     path("item/<int:id>",views.productDetail, name='productDetail'),
     
 ]

@@ -1,0 +1,50 @@
+{% extends 'tracker/base.html' %}
+{% load static %}
+
+{% block title %}
+Grocer List
+{% endblock %}
+
+{% block nav %}
+Grocer List
+{% endblock %}
+
+
+{% block contentArea %}
+<div class="container w-75 mb-2 mx-auto bg-white">
+    {% for entry in itemlist %}
+    <div class="grocer-card row mb-5 mx-auto w-75">
+
+        <div class="grocer-logo col-3">
+            <a href="{% url 'productDetail' entry.item.id %}">
+            {% if entry.item.image %}
+            <img src="{{ entry.item.image.url }}" alt="">
+            {% else %}
+            <img src="{% static 'images/image_placeholder.png' %}" alt="">
+            {% endif %}
+            </a>
+        </div>
+
+        <div class="grocer-details col-8">
+            <a href="{% url 'productDetail' entry.item.id %}">
+                [{{ entry.item.brand|upper}}] {{ entry.item.name }}
+            </a>
+            <br>
+            ---------------------------------------
+            <div>Brand: {{ entry.item.brand }}</div>
+            <div>Average Price: {{ entry.price_avg }} </div>
+            <div>Lowest Price: {{ entry.price_min }} </div>
+            <div>Weight: {{ entry.item.weight }}</div>
+        </div>
+
+        <div class="grocer-actions col-1">
+            <a href="{% url 'editProduct' entry.item.id %}" class="btn btn-primary">Edit</a>
+            <a href="" class="btn btn-danger">Delete</a>
+        </div>
+
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}
