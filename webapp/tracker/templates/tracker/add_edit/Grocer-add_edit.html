@@ -6,10 +6,15 @@ Add Grocer
 {% endblock %}
 
 {% block nav %}
-Add Grocer
+{% if edit %}
+    Edit Grocer
+{% else %}
+    Add Grocer
+{% endif %}
 {% endblock %}
 
 {% block contentArea %}
+
 {% if edit %}
 <ul class="fab-list">
     <li><i class="fa-regular fa-floppy-disk" title = "Save"></i></li>
@@ -34,7 +39,7 @@ Add Grocer
             <form action="{{ request.path }}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
 
-                {% if branch %}
+                {% if edit %}
                     <input type="hidden" name="id" value="{{ branch.id }}">
                 {% endif%}
 

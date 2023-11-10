@@ -46,7 +46,6 @@ def editGrocer(request, id):
         branch.save()
         branch.grocery_store.save()
 
-        # ! redirect to idk
         return HttpResponseRedirect(reverse('allGrocer'))
 
     else:
@@ -102,7 +101,23 @@ def compareGrocers(request):
 
 def addProduct(request):
     if request.method == 'POST':
-        pass
+        item_name = request.POST.get('item_name')
+        item_brand = request.POST.get('item_brand')
+        item_weight = request.POST.get('item_weight')
+        item_image = request.FILES.get('item_image')
+
+        newItem, created = Item.objects.get_or_create(
+                                                    name=item_name, 
+                                                    brand=item_brand, 
+                                                    weight=item_weight, 
+                                                    )
+        if created:
+            newItem.image = item_image
+            newItem.save()
+        else:
+            raise NotImplemented
+        
+        return HttpResponseRedirect(reverse('allItems'))
     else:
         return render(request, "tracker/add_edit/Product-add_edit.html", {
             'edit' : False
@@ -110,7 +125,25 @@ def addProduct(request):
 
 def editProduct(request, id):
     if request.method == 'POST':
-        pass
+
+        item_name = request.POST.get('item_name')
+        item_brand = request.POST.get('item_brand')
+        item_weight = request.POST.get('item_weight')
+        item_image = request.FILES.get('item_image')
+        item_id = request.POST.get('id')
+
+        item = Item.objects.get(pk = item_id)
+        # * required fields 
+        item.name = item_name
+        item.brand = item_brand
+        item.weight = item_weight
+
+        # * optional fields
+        if item_image is not None:
+            item.image = item_image
+        item.save()
+
+        return HttpResponseRedirect(reverse('allItems'))
     else:
         toBeEdited = Item.objects.get(pk = id)
 
