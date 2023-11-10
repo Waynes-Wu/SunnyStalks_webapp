@@ -1,6 +1,5 @@
 {% extends 'tracker/base.html' %}
 {% load static %}
-{# https://www.digitalocean.com/community/tutorials/working-with-django-templates-static-files}
 
 {% block title %}
 home
@@ -11,12 +10,19 @@ home
 <p> hi </p>
 
 QUICK LINKS
+<ul class="fab-list">
+    <li><i class="fa-solid fa-bag-shopping"></i></li>
+    <li><i class="fa-solid fa-x"></i></li>
+    <li><i class="fa-regular fa-pen-to-square"></i> </li>
+    <li><i class="fa-solid fa-file-export"></i></li>
+</ul>
+
+
+
+
 <dl class="row">
 
-    <i class="fa-solid fa-bag-shopping"></i>
-    <i class="fa-solid fa-x"></i>
-    <i class="fa-regular fa-pen-to-square"></i> 
-    <i class="fa-solid fa-file-export"></i>
+
     
     <dt class="col-sm-3">add grocer</dt>
     <dd class="col-sm-9"><a href="{% url 'addGrocer' %}">add grocer</a></dd>

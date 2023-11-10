@@ -11,3 +11,64 @@
 .nav-size{
     font-size: 1.5rem;
 }
+/* ---------------- */
+
+.grocer-logo{
+    background-color: #FDE0B6;
+    border-radius: 25% 0 0 25% ;
+}
+.grocer-logo img{
+    max-width: 100%;
+    margin: auto;
+    display: block;
+    width: 100px;
+}
+.grocer-details{
+    background-color: #FDE0B6;
+}
+.grocer-actions{
+    background-color: #5B4B35;
+    border-radius: 0 25% 25% 0;
+}
+
+/* -----basket----- */
+.basket, .purchases{
+    background-color: #856F50;
+}
+
+
+/* ---------------- */
+.fab-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column; /* Display items vertically */
+    align-items: flex-end; /* Align to the bottom right */
+}
+
+.fab-list li {
+    margin-bottom: 10px; /* Adjust the spacing between items */
+}
+
+.fab-list i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #007BFF;
+    color: #fff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    text-decoration: none;
+    font-size: 24px;
+    transition: background-color 0.2s;
+}
+
+.fab-list i:hover {
+    background-color: #0056b3;
+    cursor: pointer;
+}

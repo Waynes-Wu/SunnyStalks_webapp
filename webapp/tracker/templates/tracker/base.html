@@ -1,4 +1,6 @@
 {% load static %}
+{% load tz %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,9 +13,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{% static 'tracker/style.css' %}">
-    <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
-    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{% static 'tracker/style.css' %}?ts={{ timezone.now|date:'U' }}">
+    <script src="https://kit.fontawesome.com/faf9e038e8.js" crossorigin="anonymous"></script>
 </head>
 
 
@@ -23,38 +24,24 @@
     <nav class="navbar navbar-expand-lg nav-color mb-2 px-2">
         <div class="d-flex justify-content-between" style="width:100%">
             <a class="navbar-brand">
-            <img src="{% static 'images/logo.jpg' %}" alt="" width="30" height="30"
-                class="d-inline-block align-text-top">
-            <span class="fw-bold nav-size">Sunny Stalks</span>
+                <img src="{% static 'images/logo.jpg' %}" alt="" width="30" height="30"
+                    class="d-inline-block align-text-top">
+                <span class="fw-bold nav-size">Sunny Stalks</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <!--
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <div class="navbar-nav me-auto mb-2 mb-lg-0 d-flex flex-row justify-content-center">
-                    <div class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </div>
-                    <div class="nav-item">
-                        <button class="nav-button nav-link text-dark">Grocers</button>
-                    </div>
-                    <div class="nav-item mt-2">
-                        <a> | </a>
-                    </div>
-                    <div class="nav-item">
-                        <button class="nav-button nav-link text-dark">Compare</button>
-                    </div>
-                </div>
-            </div>-->
-            <div class="nav-item p-2 nav-size"><a class="nav-link active fw-bold " aria-current="page" href="/">Home</a></div>
+            <div class="nav-item p-2 nav-size"><a class="nav-link active fw-bold " aria-current="page" href="/">Home</a>
+            </div>
             <div class="d-flex flex-row d-flex flex-row align-items-center" id="navbarSupportedContent">
-                    <span class="nav-item p-2"><button class="nav-button nav-link text-dark">Grocers</button></span>
-                    <span class="nav-item p-2"> | </span>
-                    <span class="nav-item p-2"><button class="nav-button nav-link text-dark">Compare</button></span>
-              </div>
+                <span class="nav-item p-2"><a class="nav-button nav-link text-dark">Grocers</a></span>
+                <span class="nav-item p-2"> | </span>
+                <span class="nav-item p-2"><a class="nav-button nav-link text-dark">Products</a></span>
+                <span class="nav-item p-2"> | </span>
+                <span class="nav-item p-2"><a class="nav-button nav-link text-dark">Compare</a></span>
+            </div>
         </div>
     </nav>
     {% block contentArea %}

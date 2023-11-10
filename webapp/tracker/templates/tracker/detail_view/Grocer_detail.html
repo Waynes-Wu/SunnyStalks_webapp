@@ -6,20 +6,35 @@ Store detail
 {% endblock %}
 
 {% block contentArea %}
+<ul class="fab-list">
+    <li><i class="fa-solid fa-bag-shopping"></i></li>
+</ul>
 
-<img src="" alt="">
-<div>local farmer market</div>
+{% if  branch.image %}
+<img width="75" src="{{ branch.image.url }}" alt="">
+{% else %}
+<img width="75" src="{% static 'images/image_placeholder.png' %}" alt="">
+{% endif %}
+
+<div>{{ branch.grocery_store.name }}</div>
 <div>-----------</div>
-<div>a</div>
-<div>b</div>
-<div>c</div>
-<div>d</div>
+<div>Branch: {{ branch.address }}</div>
+<div>Number of visits: {{ visits }}</div>
+<div>Average Travel Expenses: {{ costs }}</div>
 
-<div>
-    Purchses
-    Entry1
-    Entry2
-    Entry3
+<div class="purchases">
+    <span class="purchases-caption">Purchases</span>
+    <br>
+    {% for item in itemsHistory %}
+        <a href="{% url 'productDetail' item.item.id %}">
+            {{ item.item.brand }}
+            {{ item.price }}
+            <br>
+            {{ item.item.name }}
+            {{ item.item.weight }}
+        </a>
+        <br><br>
+    {% endfor %}
 </div>
 
 {% endblock %}

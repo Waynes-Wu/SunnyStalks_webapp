@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.db.models import Avg
 
 class User(AbstractUser):
     def __str__(self):
@@ -19,7 +20,8 @@ class Branch(models.Model):
     image = models.ImageField(upload_to='branch_images/', blank=True, null=True)
     
     def getCosts(self):
-        return self.purchases.all().mean()
+        average_expense = self.purchases.aggregate(avg_expense=Avg('travel_expense'))['avg_expense']
+        return average_expense if average_expense is not None else "---"
     
     def __str__(self):
         return f'{self.grocery_store.name} [{self.address}]'

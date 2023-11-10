@@ -10,6 +10,9 @@ urlpatterns = [
     path("grocer/all",views.grocerList, name='allGrocer'),
     path("purchase/add",views.groceryPurchase, name='addPurchase'),
     path("compare",views.compareGrocers, name='compare'),
+    path("grocer/<int:id>",views.grocerDetail, name='grocerDetail'),
+    path("item/<int:id>",views.productDetail, name='productDetail'),
+    
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

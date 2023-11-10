@@ -28,7 +28,6 @@ def addGrocer(request):
         })
 def editGrocer(request, id):
     # we need to get data of a specific 
-    
     if request.method == 'POST':
         store_name = request.POST.get('store_name')
         branch_name = request.POST.get('branch_address')
@@ -61,7 +60,13 @@ def grocerList(request):
         'grocerlist':Branch.objects.all()
     })
 def groceryPurchase(request):
-    return render(request, "tracker/addPurchase.html", {})
+    if request.method == 'POST':
+        store_name = request.POST.get('store_name')
+        store_branch = request.POST.get('store_branch')
+        pass
+    else:
+
+        return render(request, "tracker/addPurchase.html", {})
 def compareGrocers(request):
     common = []
     for i in grocerList:
@@ -71,3 +76,22 @@ def compareGrocers(request):
 
     g1 = list(set(grocerList) - set(common))
     g2 = list(set(grocerList) - set(common))
+def grocerDetail(request, id):
+    branch = Branch.objects.get(pk=id)
+
+    # number of visits
+    visits = branch.purchases.count()
+    costs = branch.getCosts()
+    # first 10 items
+    a = PurchaseItems.objects.filter(purchase__grocery_store = branch).order_by('-id')[:20]
+    a = list(a)
+
+    return render(request, "tracker/detail_view/Grocer_detail.html",{
+        'branch': branch,
+        'visits': visits,
+        'costs': costs,
+        'itemsHistory': a
+    })
+def productDetail(request, id):
+    
+    return render(request, "tracker/detail_view/Product_detail.html")

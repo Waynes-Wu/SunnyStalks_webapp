@@ -9,27 +9,30 @@ Grocer List
 {% block contentArea %}
 <div class="container w-75 mb-2 mx-auto bg-white">
     {% for branch in grocerlist %}
-    <div class="grocer-card row">
+    <div class="grocer-card row mb-5 mx-auto w-75">
 
-        <div class="grocer-logo col-2">
+        <div class="grocer-logo col-3">
+            <a href="{% url 'grocerDetail' branch.id %}">
             {% if branch.image %}
-            <img width="75" src="{{ branch.image.url }}" alt="">
+            <img src="{{ branch.image.url }}" alt="">
             {% else %}
-            <img width="75" src="{% static 'images/image_placeholder.png' %}" alt="">
+            <img src="{% static 'images/image_placeholder.png' %}" alt="">
             {% endif %}
+            </a>
         </div>
 
         <div class="grocer-details col-8">
-            <div>[{{ branch.grocery_store.name|upper}}] {{ branch.address }}</div>
+            <a href="{% url 'grocerDetail' branch.id %}">
+                [{{ branch.grocery_store.name|upper}}] {{ branch.address }}
+            </a>
             ---------------------------------------
-            <div>
-                a
-                b
-                c    
-            </div>
+            <div>Overall Cost:</div>
+            <div>Travel Cost:</div>
+            <div>Efficiency:</div>
+            <div>Popularity:</div>
         </div>
 
-        <div class="grocer-actions col-2">
+        <div class="grocer-actions col-1">
             <a href="{% url 'editGrocer' branch.id %}" class="btn btn-primary">Edit</a>
             <a href="" class="btn btn-danger">Delete</a>
         </div>
