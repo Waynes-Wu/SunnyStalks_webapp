@@ -11,14 +11,14 @@ Add Grocer
 
 {% block contentArea %}
 
-<div class="container-lg bg-white" style = "border-radius:40px; padding: 35px; margin: 0; position: absolute; top: 50%; left: 50%; -ms-transform: translate(-50%,-50%); transform: translate(-50%, -50%);">
+<div class="container-lg rounded-border-groceradd">
     <div class="d-flex justify-content-evenly">
 
         <div class="mb-2">
         {% if  branch.image %}
-            <img width="75" src="{{ branch.image.url }}" alt="">
+            <img width="227px" height="175px" src="{{ branch.image.url }}" alt="">
         {% else %}
-            <img width="75" src="{% static 'images/image_placeholder.png' %}" alt="">
+            <img width="227px" height="175px" src="{% static 'images/image_placeholder.png' %}" alt="">
         {% endif %}
         </div>
 
@@ -32,15 +32,14 @@ Add Grocer
                 {% endif%}
 
                 <div class="mb-3">
-                    <label for="store_name" class="form-label">Store name:</label>
-                    <input type="text" name="store_name" id="store_name" class="form-control" value="{{ branch.grocery_store.name }}" >
+                    <input type="text" name="store_name" id="store_name" class="form-control font-inter-placeholder" value="{{ branch.grocery_store.name }}" placeholder="Store Name" style="font-size: 25.13px;">
                 </div>
                 <div class="mb-3">
-                    <label for="branch_address" class="form-label">Branch address:</label>
-                    <input type="text" name="branch_address" id="branch_address" class="form-control" value="{{ branch.address }}" >
+                    <label for="branch_address" class="form-label font-inter-label">Branch Address:</label>
+                    <input type="text" name="branch_address" id="branch_address" class="form-control font-inter-placeholder" value="{{ branch.address }}" placeholder="Branch Address">
                 </div>
                 <div class="mb-3">
-                    <label for="branch_image" class="form-label">Picture: </label>
+                    <label for="branch_image" class="form-label font-inter-label">Picture:</label>
                     <input type="file" name="branch_image" id="branch_image" class="form-control">
                 </div>
                 <div class="mb-3">

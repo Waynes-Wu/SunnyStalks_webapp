@@ -11,11 +11,18 @@ Grocer List
 
 
 {% block contentArea %}
-<div class="container w-75 mb-2 mx-auto bg-white">
-    {% for branch in grocerlist %}
-    <div class="grocer-card row mb-5 mx-auto w-75">
 
-        <div class="grocer-logo col-3">
+<ul class="fab-list">
+    <data action = "{% url 'addGrocer' %}">
+    <i class="fa-solid fa-plus" title = "Add Grocer"></i></li>
+    </data>
+</ul>
+
+<div class="container rounded-border-grocerlist">
+    {% for branch in grocerlist %}
+    <div class="grocer-card row mb-5">
+
+        <div class="grocer-logo">
             <a href="{% url 'grocerDetail' branch.id %}">
             {% if branch.image %}
             <img src="{{ branch.image.url }}" alt="">
@@ -25,7 +32,7 @@ Grocer List
             </a>
         </div>
 
-        <div class="grocer-details col-8">
+        <div class="grocer-details">
             <a href="{% url 'grocerDetail' branch.id %}">
                 [{{ branch.grocery_store.name|upper}}] {{ branch.address }}
             </a>
@@ -36,7 +43,7 @@ Grocer List
             <div>Popularity:</div>
         </div>
 
-        <div class="grocer-actions col-1">
+        <div class="grocer-actions">
             <a href="{% url 'editGrocer' branch.id %}" class="btn btn-primary">Edit</a>
             <a href="" class="btn btn-danger">Delete</a>
         </div>
