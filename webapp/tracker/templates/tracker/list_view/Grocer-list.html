@@ -11,6 +11,13 @@ Grocer List
 
 
 {% block contentArea %}
+
+<ul class="fab-list">
+    <data action = "{% url 'addGrocer' %}">
+    <i class="fa-solid fa-plus" title = "Add Grocer"></i></li>
+    </data>
+</ul>
+
 <div class="container w-75 mb-2 mx-auto bg-white">
     {% for branch in grocerlist %}
     <div class="grocer-card row mb-5 mx-auto w-75">
