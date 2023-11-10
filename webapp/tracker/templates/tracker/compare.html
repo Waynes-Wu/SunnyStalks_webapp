@@ -2,22 +2,51 @@
 {% load static %}
 
 {% block title %}
-Compare 
+Compare Grocers
 {% endblock %}
 
 {% block nav %}
-Compare 
+Compare Grocers
 {% endblock %}
 
 {% block contentArea %}
-<!-- https://www.figma.com/proto/NDo7SperO5j4UYMzcReypx/Sunnystalks?type=design&node-id=57-165&t=e3zdiU3lbCHJAqJw-1&scaling=contain&page-id=0%3A1&starting-point-node-id=18%3A229&fbclid=IwAR3vmUwhHHfVuZhSiyGDItFDaYU3MhuHaWitaWJaTpL-Ns2kllTBwfYylFQ -->
+<div class="container-fluid mt-4">
+    <div class="row">
+        <!-- Left column for Grocer 1 -->
+        <div class="col-md-5">
+            <h3>Grocer A</h3>
+            {% for entry in diffA %}
+            <div class="mb-5">
+                <p>{{ entry.item.brand }} - {{ entry.item.name }}</p>
+                <p>PRICE: {{ entry.price }}</p>
+            </div>
+            {% endfor %}
+        </div>
 
+        <!-- Middle column for Common Items -->
+        <div class="col-md-2">
+            <h3>Common Items</h3>
+            <!-- Loop through common items and display details -->
+            {% for entry in common %}
+                <div class="mb-3">
+                    <p>{{ entry.item.brand }} - {{ entry.item.name }}</p>
+                    <p>PRICE: {{ entry.price_A }}-{{ entry.price_B }}</p>
+                    <!-- Add other item details as needed -->
+                </div>
+            {% endfor %}
+        </div>
 
-<!-- div left and right for each grocers -->
+        <!-- Right column for Grocer 2 -->
+        <div class="col-md-5">
+            <h3>Grocer B</h3>
+            {% for entry in diffB %}
+            <div class="mb-5">
+                <p>{{ entry.item.brand }} - {{ entry.item.name }}</p>
+                <p>PRICE: {{ entry.price }}</p>
+            </div>
+            {% endfor %}
 
-<!-- select buttons -->
-
-<!-- 3 divs for grocer 1, common, grocer2 (scrollable)-->
-
-
+        </div>
+    </div>
+</div>
 {% endblock %}

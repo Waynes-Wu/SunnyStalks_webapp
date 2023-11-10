@@ -69,7 +69,7 @@ def grocerDetail(request, id):
     # number of visits
     visits = branch.purchases.count()
     costs = branch.getCosts()
-    # first 10 items
+    # first 20 items
     a = PurchaseItems.objects.filter(purchase__grocery_store = branch).order_by('-id')[:20]
     a = list(a)
 
@@ -89,15 +89,57 @@ def groceryPurchase(request):
     else:
         return render(request, "tracker/addPurchase.html", {})
 def compareGrocers(request):
-    common = []
-    for i in grocerList:
-        for j in grocerList:
-            if grocerList[i] == grocerList[j]:
-                common.append(grocerList[i])
+    branchA = Branch.objects.get(pk = 2)
+    branchB = Branch.objects.get(pk = 6)
 
-    g1 = list(set(grocerList) - set(common))
-    g2 = list(set(grocerList) - set(common))
+    # queryset of unique item_id
+    items_branchA = set(PurchaseItems.objects.filter(purchase__grocery_store=branchA).values_list('item', flat=True))
+    items_branchB = set(PurchaseItems.objects.filter(purchase__grocery_store=branchB).values_list('item', flat=True))
 
+    # set of categorized item_id
+    common = items_branchA.intersection(items_branchB)
+    diffA = items_branchA.difference(items_branchB)
+    diffB = items_branchB.difference(items_branchA)
+
+    common_with_prices = []
+    for item in common:
+        it = Item.objects.get(pk = item)
+        price_A = it.getLatestPrice(branchA)
+        price_B = it.getLatestPrice(branchB)
+        common_with_prices.append({
+            'item' : it,
+            'price_A' : price_A,
+            'price_B': price_B
+        })
+
+    diffA_with_prices = []
+    for item in diffA:
+        it = Item.objects.get(pk = item)
+        price_A = it.getLatestPrice(branchA)
+        diffA_with_prices.append({
+            'item' : it,
+            'price' : price_A,
+        })
+    diffB_with_prices = []
+    for item in diffB:
+        it = Item.objects.get(pk = item)
+        price_B = it.getLatestPrice(branchB)
+        diffB_with_prices.append({
+            'item' : it,
+            'price' : price_B,
+        })
+
+    # brand
+    # item name
+    # price
+    # weight
+    return render(request, "tracker/compare.html", {
+        'branchA' : branchA,
+        'branchB' : branchB,
+        'common': common_with_prices,
+        'diffA': diffA_with_prices,
+        'diffB': diffB_with_prices
+    })
 
 def addProduct(request):
     if request.method == 'POST':
@@ -164,6 +206,8 @@ def itemList(request):
             'timesBought': data.get('times_bought')
         }
         items.append(item_data)
+
+        
     return render(request, "tracker/list_view/Product-list.html", {
         'itemlist': items
         })

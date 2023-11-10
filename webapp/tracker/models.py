@@ -38,11 +38,16 @@ class Item(models.Model):
     
     def getData(self):
         all_sold_history = PurchaseItems.objects.filter(item=self)
-        data = all_sold_history.aggregate(lowest=Min('price'), avg=Avg('price'), count=Count('id'))
+        data = all_sold_history.aggregate(lowest=Min('price'), 
+                                        avg=Avg('price'), 
+                                        count=Count('id'))
         lowest_price = data.get('lowest')
         avg_price = data.get('avg')
         times_bought = data.get('count')
         return {'lowest_price': lowest_price, 'avg_price': avg_price, 'times_bought': times_bought}
+    def getLatestPrice(self, branch):
+        """latest price from branch"""
+        return PurchaseItems.objects.filter(item = self, purchase__grocery_store = branch).last().price  
     
 class PurchaseHistory(models.Model):
     date = models.DateField(auto_now_add=True)
