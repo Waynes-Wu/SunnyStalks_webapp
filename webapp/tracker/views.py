@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from tracker.models import *
+from django.db.models import Min, Avg, Count
 
 def index(request):
     return render(request, "tracker/index.html", {})
@@ -93,5 +94,17 @@ def grocerDetail(request, id):
         'itemsHistory': a
     })
 def productDetail(request, id):
-    
-    return render(request, "tracker/detail_view/Product_detail.html")
+    item = Item.objects.get(pk=id)
+    allSoldHistory = PurchaseItems.objects.filter(item=item)
+    data = allSoldHistory.aggregate(lowest = Min('price'),
+                                    avg = Avg('price'),
+                                    count = Count('id'))
+    lowest = data.get('min')
+    avg = data.get('avg')
+    count = data.get('count')
+    return render(request, "tracker/detail_view/Product_detail.html", {
+        'price_avg': avg,
+        'price_min': lowest,
+        'item' : item,
+        'timesBought': count
+    })
