@@ -6,11 +6,18 @@ Grocer List
 {% endblock %}
 
 {% block nav %}
-Grocer List
+Item Profile
 {% endblock %}
 
 
 {% block contentArea %}
+
+<ul class="fab-list">
+    <li>
+        <i data-action= "{% url 'addProduct' %}" class="fa-solid fa-plus" title = "Add Grocer"></i></li>
+    </li>
+</ul>
+
 <div class="container w-75 mb-2 mx-auto bg-white">
     {% for entry in itemlist %}
     <div class="grocer-card row mb-5 mx-auto w-75">

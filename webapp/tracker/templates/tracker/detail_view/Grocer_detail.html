@@ -5,10 +5,15 @@
 Store detail
 {% endblock %}
 
+
+{% block nav %}
+Grocer Profile
+{% endblock %}
+
 {% block contentArea %}
 <ul class="fab-list">
-    <li><i class="fa-solid fa-bag-shopping" title = "Purchase"></i></li>
-    <li><i class="fa-regular fa-pen-to-square" title = "Edit"></i></li>
+    <li><i data-action = "{% url 'addPurchase' %}" class="fa-solid fa-bag-shopping" title = "Purchase"></i></li>
+    <li><i data-action = "{% url 'editGrocer' branch.id %}" class="fa-regular fa-pen-to-square" title = "Edit"></i></li>
     <li><i class="fa-solid fa-file-export" title = "Export"></i></li>
     <li><i class="fa-solid fa-trash" title = "Delete"></i></li>
 </ul>

@@ -13,9 +13,9 @@ Grocer List
 {% block contentArea %}
 
 <ul class="fab-list">
-    <data action = "{% url 'addGrocer' %}">
-    <i class="fa-solid fa-plus" title = "Add Grocer"></i></li>
-    </data>
+    <li>
+        <i data-action= "{% url 'addGrocer' %}" class="fa-solid fa-plus" title = "Add Grocer"></i></li>
+    </li>
 </ul>
 
 <div class="container rounded-border-grocerlist">

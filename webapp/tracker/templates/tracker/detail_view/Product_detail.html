@@ -6,6 +6,10 @@ item detail
 {% endblock %}
 
 {% block contentArea %}
+<ul class="fab-list">
+    <li><i data-action = "{% url 'editProduct' item.id %}" class="fa-regular fa-pen-to-square" title = "Edit"></i></li>
+    <li><i class="fa-solid fa-trash" title = "Delete"></i></li>
+</ul>
 
 <img src="" alt="">
 <div>{{ item.name }}</div>

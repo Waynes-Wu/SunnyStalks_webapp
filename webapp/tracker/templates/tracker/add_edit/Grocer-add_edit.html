@@ -10,6 +10,13 @@ Add Grocer
 {% endblock %}
 
 {% block contentArea %}
+{% if edit %}
+<ul class="fab-list">
+    <li><i class="fa-regular fa-floppy-disk" title = "Save"></i></li>
+</ul>
+{% endif %}
+
+
 
 <div class="container-lg rounded-border-groceradd">
     <div class="d-flex justify-content-evenly">
