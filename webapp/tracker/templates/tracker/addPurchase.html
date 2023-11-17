@@ -10,13 +10,31 @@ Record Purchase
 {% endblock %}
 
 {% block contentArea %}
+<script src="{% static 'tracker/addPurchase.js' %}"></script>
 <!--  put ur stufff here  -->
 
 <div class="container-lg bg-white">
-    <div class="d-flex justify-content-evenly">
+    <div class="">
+        <!-- d-flex justify-content-evenly -->
         <div>
             <img src="{% static 'images/image_placeholder.png' %}" alt="">
         </div>
+        <div> details here </div>
+
+        <div>
+            <input type="text" id="searchInput" placeholder="Search items">
+            <button id="searchButton">Search</button>
+            <p>Results:</p>
+            <ul id="resultsList"></ul>
+        </div>
+        
+
+
+
+
+
+
+
         <div>
             <!-- checkbox if storename exists -->
             <form action="{% url 'addGrocer' %}" method="post">
