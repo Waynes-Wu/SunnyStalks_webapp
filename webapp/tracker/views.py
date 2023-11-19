@@ -87,7 +87,9 @@ def groceryPurchase(request):
         store_branch = request.POST.get('store_branch')
         pass
     else:
-        return render(request, "tracker/addPurchase.html", {})
+        return render(request, "tracker/addPurchase.html", {
+            'items': Item.objects.all()
+        })
 def compareGrocers(request):
     branchA = Branch.objects.get(pk = 2)
     branchB = Branch.objects.get(pk = 6)
