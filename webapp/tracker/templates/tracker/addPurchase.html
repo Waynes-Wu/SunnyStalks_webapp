@@ -11,6 +11,7 @@ Record Purchase
 
 {% block contentArea %}
 <script src="{% static 'tracker/addPurchase.js' %}"></script>
+<link rel="stylesheet" href="{% static 'tracker/addPurchase.css' %}">
 <!--  put ur stufff here  -->
 
 <div class="container-lg bg-white">
@@ -24,11 +25,17 @@ Record Purchase
         <div class="searchItems">
             <label for="searchItem">Search Item:</label>
             <input type="text" id="searchItem" name="searchItem">
-            <datalist id="itemList">
+            <ul id="itemDropdown" class="dropdown-content hide">
                 {% for item in items %}
-                <option value="{{item.name}}"></option>
+                <li 
+                    data-id="{{item.id}}"
+                    data-brand = "{{item.brand}}"
+                    data-name = "{{item.name}}"
+                    data-weight = "{{item.weight}}"
+                    >{{item}}
+                </li>
                 {% endfor %}
-            </datalist>
+            </ul>
 
             <label for="existingItem">Existing Item:</label>
             <input type="checkbox" id="existingItem" name="existingItem" disabled>

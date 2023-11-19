@@ -1,10 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
-
     const existingItemCheckbox = document.querySelector('#existingItem');
-    const inputsToDisable = document.querySelectorAll('#item, #brand, #weight');
     const submitButton = document.querySelector('input[type="submit"]');
     const basket = document.querySelector('#basket');
 
+    // * checkbox update enable forms
     existingItemCheckbox.addEventListener('change', function () {
         const inputsToDisable = document.querySelectorAll('#item, #brand, #weight');
         inputsToDisable.forEach(input => {
@@ -12,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    // * for submit button to add to basket
     submitButton.addEventListener('click', function (event) {
         event.preventDefault(); // Prevent form submission
 
@@ -35,31 +35,69 @@ document.addEventListener('DOMContentLoaded', function () {
 
         resetForm();
     });
+    // * for searching
     const searchItemInput = document.querySelector('#searchItem');
-    const dataList = document.querySelector('#itemList');
-    const items = Array.from(document.querySelectorAll('#itemList option'));
+    const itemDropdown = document.querySelector('#itemDropdown');
+    const items = Array.from(document.querySelectorAll('#itemDropdown li'));
 
     searchItemInput.addEventListener('input', function () {
-        const searchTerm = this.value.toLowerCase();
-        const matchedItems = items.filter(item => item.value.toLowerCase().includes(searchTerm)).slice(0, 5);
-
-        // Clear the existing options in the datalist
-        dataList.innerHTML = '';
-
-        // Append matched items to the datalist
-        matchedItems.forEach(item => {
-            dataList.appendChild(item.cloneNode(true));
+        const searchTerm = this.value.toUpperCase();
+        items.forEach(item => {
+            const txtValue = item.textContent || item.innerText;
+            if (txtValue.toUpperCase().indexOf(searchTerm) > -1) {
+                item.style.display = "";
+            } else {
+                item.style.display = "none";
+            }
         });
+
+        itemDropdown.classList.remove('hide');
     });
 
-    // Handle selecting an option from the datalist
-    searchItemInput.addEventListener('change', function () {
-        const selectedOption = items.find(item => item.value.toLowerCase() === this.value.toLowerCase());
-        if (selectedOption) {
-            this.value = selectedOption.value;
-            // Handle what to do when an option is selected, for example, you can perform an action here
+    searchItemInput.addEventListener('focus', function () {
+        itemDropdown.classList.remove('hide');
+    });
+
+    searchItemInput.addEventListener('blur', function (e) {
+        setTimeout(function() {
+
+            
+            itemDropdown.classList.add('hide');
+
+        }, 50);
+    });
+
+    itemDropdown.addEventListener('click', function (e) {
+        if (e.target.tagName === 'LI') {
+            searchItemInput.value = e.target.textContent;
+            itemDropdown.classList.remove('show');
+
+            const itemNameInput = document.querySelector('#item');
+            const priceInput = document.querySelector('#price');
+            const brandInput = document.querySelector('#brand');
+            const weightInput = document.querySelector('#weight');
+
+            const selectedItemId = e.target.dataset.id;
+            const selectedBrand = e.target.dataset.brand;
+            const selectedName = e.target.dataset.name;
+            const selectedWeight = e.target.dataset.weight;
+
+            itemNameInput.value = selectedName;
+            priceInput.value = '';
+            brandInput.value = selectedBrand;
+            weightInput.value = selectedWeight;
+
+            existingItemCheckbox.checked = true;
+            itemDropdown.classList.add('hide');
         }
     });
+
+
+
+
+
+
+
 });
 
 function resetForm() {
