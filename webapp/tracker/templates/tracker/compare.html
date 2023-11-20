@@ -10,39 +10,48 @@ Compare Grocers
 {% endblock %}
 
 {% block contentArea %}
-<div class="container-fluid mt-4">
-    <div class="row">
+<div class="container-fluid rounded-border-compare">
+    <!-- row for displaying the two grocers -->
+    <div></div>
+    <!-- row for the selects -->
+    <div style="display: flex; justify-content: space-evenly;">
+        <button class="compare-select">Select</button><button class="compare-select">Select</button>
+    </div>
+    <div class="row" style="justify-content: center;">
         <!-- Left column for Grocer 1 -->
-        <div class="col-md-5">
-            <h3>Grocer A</h3>
+        <div class="col-md-5 compare-brownlist">
             {% for entry in diffA %}
-            <div class="mb-5">
-                <p>{{ entry.item.brand }} - {{ entry.item.name }}</p>
-                <p>PRICE: {{ entry.price }}</p>
+            <div class="mb-5 compare-item">
+                <div style="display: flex; justify-content: space-between;">
+                    <span class="font-inter-compareitem" style="font-weight: 700;">{{ entry.item.brand }}</span><span class="font-inter-compareitem" style="font-weight: 700;">₱{{ entry.price_A }} - ₱{{ entry.price_B }}</span>
+                </div>
+                <p class="font-inter-compareitem">{{ entry.item.name }}</p>
             </div>
             {% endfor %}
         </div>
 
         <!-- Middle column for Common Items -->
-        <div class="col-md-2">
-            <h3>Common Items</h3>
+        <div class="col-md-2 compare-brownlist">
             <!-- Loop through common items and display details -->
             {% for entry in common %}
-                <div class="mb-3">
-                    <p>{{ entry.item.brand }} - {{ entry.item.name }}</p>
-                    <p>PRICE: {{ entry.price_A }}-{{ entry.price_B }}</p>
+                <div class="mb-3 compare-item">
+                    <div style="display: flex; justify-content: space-between;">
+                        <span class="font-inter-compareitem" style="font-weight: 700;">{{ entry.item.brand }}</span><span class="font-inter-compareitem" style="font-weight: 700;">₱{{ entry.price_A }} - ₱{{ entry.price_B }}</span>
+                    </div>
+                    <p class="font-inter-compareitem">{{ entry.item.name }}</p>
                     <!-- Add other item details as needed -->
                 </div>
             {% endfor %}
         </div>
 
         <!-- Right column for Grocer 2 -->
-        <div class="col-md-5">
-            <h3>Grocer B</h3>
+        <div class="col-md-5 compare-brownlist">
             {% for entry in diffB %}
-            <div class="mb-5">
-                <p>{{ entry.item.brand }} - {{ entry.item.name }}</p>
-                <p>PRICE: {{ entry.price }}</p>
+            <div class="mb-5 compare-item">
+                <div style="display: flex; justify-content: space-between;">
+                    <span class="font-inter-compareitem" style="font-weight: 700;">{{ entry.item.brand }}</span><span class="font-inter-compareitem" style="font-weight: 700;">₱{{ entry.price_A }} - ₱{{ entry.price_B }}</span>
+                </div>
+                <p class="font-inter-compareitem">{{ entry.item.name }}</p>
             </div>
             {% endfor %}
 

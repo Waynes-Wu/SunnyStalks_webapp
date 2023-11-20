@@ -11,7 +11,7 @@
 }
 .nav-body{
     background-color: #ffe1b4;
-    height: 89px;
+    height: 8.25%;
 }
 .nav-title{
     color: #513012;
@@ -60,6 +60,14 @@
     line-height: 27px;
     letter-spacing: 0em;
     text-align: center;
+}
+.font-inter-compareitem{
+    font-family: Inter;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 27px;
+    letter-spacing: 0em;
+
 }
 /* ---------------- */
 
@@ -176,6 +184,48 @@
     margin-top: 48px;
     background-color: white;
     width: 1671px;
+}
+
+.rounded-border-compare{
+    border-radius:40px; 
+    padding: 5%; 
+    margin: 63px auto;
+    background-color: white;
+    width: 87.03%;
+    height: 80.83%;
+}
+
+.compare-brownlist {
+    width: 25.8%;
+    background: #86704F;
+    height: 483px;
+    border-radius:31px;
+    margin: 0 2.9%;
+    padding: 1% 0;
+}
+
+.compare-item {
+    width: 91.1%;
+    background: white;
+    height: 13.9%;
+    border-radius:13px;
+    margin: 2% auto 0;
+    padding: 1.38%;
+}
+.compare-select {
+    width: 11.67%;
+    height: 4.5;
+    border-radius: 15px;
+    border-width: 0;
+    background-color: #513012;
+    font-size: 20px;
+    font-family: Inter;
+    font-weight: 700;
+    line-height: 24.2px;
+    letter-spacing: 0em;
+    margin: 1.7% 0;
+    color: white;
+    text-align: center;
 }
 
 /* Popup container - can be anything you want */
