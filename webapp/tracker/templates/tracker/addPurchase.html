@@ -45,28 +45,29 @@ Record Purchase
         <div>
             <form class="mt-4" action="{% url 'addGrocer' %}" method="post">
                 {% csrf_token %}
+                <input type="hidden" id="id" value="">
 
                 Add Item:<br>
 
                 <div class="form-group">
                     <label for="item">Item:</label>
-                    <input class="form-control" type="text" name="item" id="item">
+                    <input class="form-control" type="text" name="item" id="item" required>
                 </div>
 
                 <div class="form-group">
                     <label for="price">Price:</label>
-                    <input class="form-control" type="number" name="price" id="price">
+                    <input class="form-control" type="number" name="price" id="price" required>
                 </div>
 
                 <br>
                 <div class="form-group">
                     <label for="brand">Brand:</label>
-                    <input class="form-control" type="text" name="brand" id="brand">
+                    <input class="form-control" type="text" name="brand" id="brand" required>
                 </div>
 
                 <div class="form-group">
                     <label for="weight">Weight/Volume:</label>
-                    <input class="form-control" type="number" name="weight" id="weight">
+                    <input class="form-control" type="number" name="weight" id="weight" required>
                 </div>
 
                 <br>
@@ -75,13 +76,13 @@ Record Purchase
                     <input class="form-control" type="number" name="travexp" id="travexp">
                 </div>
 
-
-                <input type="submit" value="Submit">
+                <div class="form-group">
+                    <input type="submit" value="ADD">
+                </div>
             </form>
-
         </div>
 
-        <div id="basket">
+        <div id="basket" class="container-lg bg-brown">
 
         </div>
 

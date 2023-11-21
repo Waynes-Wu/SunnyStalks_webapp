@@ -4,43 +4,69 @@ document.addEventListener('DOMContentLoaded', function () {
     const basket = document.querySelector('#basket');
 
     // * checkbox update enable forms
-    existingItemCheckbox.addEventListener('change', function () {
-        const inputsToDisable = document.querySelectorAll('#item, #brand, #weight');
-        inputsToDisable.forEach(input => {
-            input.disabled = this.checked;
-        });
-    });
+    existingItemCheckbox.addEventListener('change', disableForms);
 
     // * for submit button to add to basket
-    submitButton.addEventListener('click', function (event) {
-        event.preventDefault(); // Prevent form submission
+    submitButton.addEventListener('click', function (e) {
+        e.preventDefault(); // Prevent form submission
 
+        const requiredInputs = document.querySelectorAll('input[required]');
+
+        for (const input of requiredInputs) {
+            if (input.value.trim() === '') {
+                console.log(`${input.id} is empty.`);
+                return;
+            }
+        }
+        
+        const id = document.querySelector('#id').value;
         const itemName = document.querySelector('#item').value;
         const price = document.querySelector('#price').value;
         const brand = document.querySelector('#brand').value;
         const weight = document.querySelector('#weight').value;
         const travexp = document.querySelector('#travexp').value;
 
+
+
         const newItem = document.createElement('div');
         newItem.classList.add('new-item');
+
+        // add data
+        if (existingItemCheckbox.checked){
+            newItem.dataset['id'] = id
+        }
+        newItem.dataset['item'] = itemName
+        newItem.dataset['price'] = price
+        newItem.dataset['brand'] = brand
+        newItem.dataset['weight'] = weight
+        if (travexp == ""){
+            newItem.dataset['travexp'] = -1
+        }
+
+
+
         newItem.innerHTML = `
         <p>Item: ${itemName}
         Price: ${price}
         Brand: ${brand}
         Weight/Volume: ${weight}
-        Travel Expenses: ${travexp}</p>
-    `;
-
+        Travel Expenses: ${travexp}</p>`;
         basket.appendChild(newItem);
-
         resetForm();
     });
+
+
     // * for searching
     const searchItemInput = document.querySelector('#searchItem');
     const itemDropdown = document.querySelector('#itemDropdown');
     const items = Array.from(document.querySelectorAll('#itemDropdown li'));
 
     searchItemInput.addEventListener('input', function () {
+        if (searchItemInput.value == ""){
+            resetForm()
+            existingItemCheckbox.disabled = true
+        }
+
         const searchTerm = this.value.toUpperCase();
         items.forEach(item => {
             const txtValue = item.textContent || item.innerText;
@@ -50,23 +76,21 @@ document.addEventListener('DOMContentLoaded', function () {
                 item.style.display = "none";
             }
         });
-
         itemDropdown.classList.remove('hide');
     });
 
+    // * dropdown show
     searchItemInput.addEventListener('focus', function () {
         itemDropdown.classList.remove('hide');
     });
-
+    // * dropdown show hide
     searchItemInput.addEventListener('blur', function (e) {
         setTimeout(function() {
-
-            
             itemDropdown.classList.add('hide');
-
-        }, 50);
+        }, 100);
     });
 
+    // * dropdown click
     itemDropdown.addEventListener('click', function (e) {
         if (e.target.tagName === 'LI') {
             searchItemInput.value = e.target.textContent;
@@ -87,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
             brandInput.value = selectedBrand;
             weightInput.value = selectedWeight;
 
-            existingItemCheckbox.checked = true;
+            clickCheckBox(false)
             itemDropdown.classList.add('hide');
         }
     });
@@ -100,12 +124,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
+function disableForms () {
+    const inputsToDisable = document.querySelectorAll('#item, #brand, #weight');
+    inputsToDisable.forEach(input => {
+        input.disabled = this.checked;
+    });
+}
+    
 function resetForm() {
     document.querySelectorAll('input[type="text"], input[type="number"]').forEach(input => {
         input.value = '';
+        input.disabled = false
     });
-
+    
     const existingItemCheckbox = document.getElementById('existingItem');
     existingItemCheckbox.checked = false;
     existingItemCheckbox.disabled = true;
+}
+function clickCheckBox(disableAfter){
+    const existingItemCheckbox = document.querySelector('#existingItem');
+    existingItemCheckbox.disabled = false
+    existingItemCheckbox.click()
+    if (disableAfter){
+        existingItemCheckbox.disabled = true
+    }
 }
