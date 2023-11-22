@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // * for submit button to add to basket
     submitButton.addEventListener('click', function (e) {
-        e.preventDefault(); // Prevent form submission
+        e.preventDefault(); 
 
         const requiredInputs = document.querySelectorAll('input[required]');
 
@@ -44,8 +44,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if (travexp == "") {
             newItem.dataset['travexp'] = -1
         }
-
-
 
         newItem.innerHTML = `
         <p>Item: ${itemName}
@@ -87,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     // * dropdown show hide
     searchItemInput.addEventListener('blur', function (e) {
-        setTimeout(function () {
+        setTimeout( function () {
             itemDropdown.classList.add('hide');
         }, 100);
     });
@@ -149,13 +147,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-
 });
 
 function disableForms() {
     const inputsToDisable = document.querySelectorAll('#item, #brand, #weight');
     inputsToDisable.forEach(input => {
-        input.disabled = this.checked;
+        input.disabled = existingItemCheckbox.checked;
     });
 }
 

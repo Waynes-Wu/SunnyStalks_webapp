@@ -12,7 +12,7 @@ Grocer Profile
 
 {% block contentArea %}
 <ul class="fab-list">
-    <li><i data-action = "{% url 'addPurchase' %}" class="fa-solid fa-bag-shopping" title = "Purchase"></i></li>
+    <li><i data-action = "{% url 'addPurchase' branch.id %}" class="fa-solid fa-bag-shopping" title = "Purchase"></i></li>
     <li><i data-action = "{% url 'editGrocer' branch.id %}" class="fa-regular fa-pen-to-square" title = "Edit"></i></li>
     <li><i class="fa-solid fa-file-export" title = "Export"></i></li>
     <li><i class="fa-solid fa-trash" title = "Delete"></i></li>
