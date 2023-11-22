@@ -1,3 +1,6 @@
+const axios = require('axios');
+
+
 document.addEventListener('DOMContentLoaded', function () {
     const existingItemCheckbox = document.querySelector('#existingItem');
     const submitButton = document.querySelector('input[type="submit"]');
@@ -18,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
         }
-        
+
         const id = document.querySelector('#id').value;
         const itemName = document.querySelector('#item').value;
         const price = document.querySelector('#price').value;
@@ -27,19 +30,18 @@ document.addEventListener('DOMContentLoaded', function () {
         const travexp = document.querySelector('#travexp').value;
 
 
-
         const newItem = document.createElement('div');
         newItem.classList.add('new-item');
 
         // add data
-        if (existingItemCheckbox.checked){
+        if (existingItemCheckbox.checked) {
             newItem.dataset['id'] = id
         }
         newItem.dataset['item'] = itemName
         newItem.dataset['price'] = price
         newItem.dataset['brand'] = brand
         newItem.dataset['weight'] = weight
-        if (travexp == ""){
+        if (travexp == "") {
             newItem.dataset['travexp'] = -1
         }
 
@@ -62,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const items = Array.from(document.querySelectorAll('#itemDropdown li'));
 
     searchItemInput.addEventListener('input', function () {
-        if (searchItemInput.value == ""){
+        if (searchItemInput.value == "") {
             resetForm()
             existingItemCheckbox.disabled = true
         }
@@ -85,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     // * dropdown show hide
     searchItemInput.addEventListener('blur', function (e) {
-        setTimeout(function() {
+        setTimeout(function () {
             itemDropdown.classList.add('hide');
         }, 100);
     });
@@ -116,7 +118,33 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    document.querySelector('i.fa-floppy-disk').addEventListener('click', () => {
+        // send to backend
+        document.querySelectorAll('new-item').forEach(el => {
+            const itemsData = [];
+            // list of dict?
+            dict = {
+                'id': el.dataset.id,
+                'itemname': el.dataset.itemName,
+                'price': el.dataset.price,
+                'brand': el.dataset.brand,
+                'weight': el.dataset.weight,
+                'travexp': el.dataset.travexp
+            }
+            itemsData.push(dict)
+        })
+        
+        axios.post(window.location.pathname, {
+            'itemList': itemsData
+        })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
 
+    })
 
 
 
@@ -124,28 +152,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-function disableForms () {
+function disableForms() {
     const inputsToDisable = document.querySelectorAll('#item, #brand, #weight');
     inputsToDisable.forEach(input => {
         input.disabled = this.checked;
     });
 }
-    
+
 function resetForm() {
     document.querySelectorAll('input[type="text"], input[type="number"]').forEach(input => {
         input.value = '';
         input.disabled = false
     });
-    
+
     const existingItemCheckbox = document.getElementById('existingItem');
     existingItemCheckbox.checked = false;
     existingItemCheckbox.disabled = true;
 }
-function clickCheckBox(disableAfter){
+function clickCheckBox(disableAfter) {
     const existingItemCheckbox = document.querySelector('#existingItem');
     existingItemCheckbox.disabled = false
     existingItemCheckbox.click()
-    if (disableAfter){
+    if (disableAfter) {
         existingItemCheckbox.disabled = true
     }
 }

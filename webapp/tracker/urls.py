@@ -10,7 +10,8 @@ urlpatterns = [
     path("grocer/all",views.grocerList, name='allGrocer'),
     path("grocer/<int:id>",views.grocerDetail, name='grocerDetail'),
 
-    path("purchase/add",views.groceryPurchase, name='addPurchase'),
+    path("purchase/add/<int:branch_id>",views.addPurchase, name='addPurchase'),
+    path("purchase/<int:id>",views.purchaseDetail, name='purchaseDetail'),
     path("compare",views.compareGrocers, name='compare'),
 
     path("item/add",views.addProduct, name='addProduct'),

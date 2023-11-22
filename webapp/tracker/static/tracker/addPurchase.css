@@ -9,3 +9,36 @@
 .hide{
     display: none;
 }
+
+.outerBox {
+    width: 55%;
+    height: 85vh;
+    display: block;
+    margin: auto;
+    margin-top: 2.5%;
+    border-radius: 20px; 
+    padding-left: 10%;
+    padding-right: 10%;
+}
+@media (max-width: 1400px) {
+    .outerBox {
+      width: 70%; /* Change the width when viewport width is 1600px or more */
+    }
+}
+@media (max-width: 1150px) {
+    .outerBox {
+      width: 80%; /* Change the width when viewport width is 1600px or more */
+    }
+}
+@media (max-width: 800px) {
+    .outerBox {
+      width: 95%; /* Change the width when viewport width is 1600px or more */
+    }
+}
+
+@media (min-width: 2000px) {
+    .outerBox {
+        width: 1000px; /* Change the width when viewport width is 1600px or more */
+        height: 1110px;
+    }
+}

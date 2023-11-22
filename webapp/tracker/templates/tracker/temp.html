@@ -1,0 +1,20 @@
+{% extends 'tracker/base.html' %}
+{% load static %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block nav %}
+Home
+{% endblock %}
+
+
+{% block contentArea %}
+
+{{ purchase.date }} <br>
+{{ purchase.travel_expense  }} <br>
+{{ purchase.grocery_store.address }} <br>
+
+
+{% endblock %}

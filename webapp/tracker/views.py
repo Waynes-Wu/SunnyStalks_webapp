@@ -81,15 +81,55 @@ def grocerDetail(request, id):
     })
 
 
-def groceryPurchase(request):
+def addPurchase(request, branch_id):
     if request.method == 'POST':
-        store_name = request.POST.get('store_name')
-        store_branch = request.POST.get('store_branch')
-        pass
+        
+        data = json.loads(request.body)
+        items = data.get('itemList')  
+
+        branch = Branch.objects.get(pk = branch_id)
+    
+        exp = item_data.get('travexp')
+
+        purHist = PurchaseHistory(
+            travel_expense = exp if exp != -1 else None,
+            grocery_store = branch
+        )
+        purHist.save()
+        
+        for item in items:
+            itemid = item_data.get('id')
+            new_item = ''
+            if  itemid == 0:
+                new_item = Item(name = item_data.get('itemName'),
+                                brand = item_data.get('brand'),
+                                weight = item_data.get('weight'))
+                new_item.save()
+            else:
+                new_item = Item.objects.get(pk = item_data.get('id'))
+                
+            purchase_item = PurchaseItems(  purchase = purHist,
+                                            item = new_item,
+                                            price = item_data.get('price'))
+            purchase_item.save()
+        return HttpResponseRedirect(reverse('purchaseDetail', args = [purHist.id]))        
+
     else:
+        branch = Branch.objects.get(pk = branch_id)
+        allItems = Item.objects.all()
+        
         return render(request, "tracker/addPurchase.html", {
-            'items': Item.objects.all()
+            'items': allItems,
+            'branch' : branch
         })
+    
+def purchaseDetail(request, id):
+    purchaseHistory = PurchaseHistory.objects.get(pk = id)
+    return render(request, "tracker/temp.html", {
+        'purchase': purchaseHistory
+    })
+
+
 def compareGrocers(request):
     branchA = Branch.objects.get(pk = 2)
     branchB = Branch.objects.get(pk = 6)
