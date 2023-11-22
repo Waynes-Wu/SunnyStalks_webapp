@@ -1,4 +1,3 @@
-const axios = require('axios');
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -75,8 +74,8 @@ document.addEventListener('DOMContentLoaded', function () {
             } else {
                 item.style.display = "none";
             }
+            itemDropdown.classList.remove('hide');
         });
-        itemDropdown.classList.remove('hide');
     });
 
     // * dropdown show
@@ -111,7 +110,8 @@ document.addEventListener('DOMContentLoaded', function () {
             brandInput.value = selectedBrand;
             weightInput.value = selectedWeight;
 
-            clickCheckBox(false)
+            if (!existingItemCheckbox.checked)
+                clickCheckBox(false)
             itemDropdown.classList.add('hide');
         }
     });
@@ -151,6 +151,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function disableForms() {
     const inputsToDisable = document.querySelectorAll('#item, #brand, #weight');
+    const existingItemCheckbox = document.querySelector('#existingItem');
     inputsToDisable.forEach(input => {
         input.disabled = existingItemCheckbox.checked;
     });
@@ -169,6 +170,7 @@ function resetForm() {
 function clickCheckBox(disableAfter) {
     const existingItemCheckbox = document.querySelector('#existingItem');
     existingItemCheckbox.disabled = false
+    
     existingItemCheckbox.click()
     if (disableAfter) {
         existingItemCheckbox.disabled = true

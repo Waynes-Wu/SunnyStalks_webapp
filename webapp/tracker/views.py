@@ -1,3 +1,4 @@
+import json
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
@@ -85,7 +86,7 @@ def addPurchase(request, branch_id):
     if request.method == 'POST':
         
         data = json.loads(request.body)
-        items = data.get('itemList')  
+        item_data = data.get('itemList')  
 
         branch = Branch.objects.get(pk = branch_id)
     
@@ -97,7 +98,7 @@ def addPurchase(request, branch_id):
         )
         purHist.save()
         
-        for item in items:
+        for item in item_data:
             itemid = item_data.get('id')
             new_item = ''
             if  itemid == 0:
