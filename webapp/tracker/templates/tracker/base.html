@@ -24,13 +24,15 @@
 
 
 <body class="bg-brown">
-    <nav class="navbar navbar-expand-lg nav-body mb-2 px-2">
-        <div class="d-flex justify-content-between" style="width:100%">
-            <div class="navbar-brand">
-                <img src="{% static 'images/logo.jpg' %}" alt="" width="64" height="64"
-                    class="d-inline-block align-text-center">
-                <span class="font-inter-nav">Sunny Stalks</span>
-            </div>
+    <nav class="navbar navbar-expand-lg nav-body">
+        <div class="d-flex justify-content-between align-items-center px-2" style="width:100%">
+            <a class="no-underline" href="{% url 'allGrocer' %}">
+                <div class="navbar-brand d-flex align-items-center">
+                    <img src="{% static 'images/logo.jpg' %}" alt="" width="64" height="64"
+                        class="d-inline-block align-text-center">
+                    <span class="font-inter-nav px-2">Sunny Stalks</span>
+                </div>
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
