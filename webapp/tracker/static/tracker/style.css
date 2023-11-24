@@ -292,3 +292,11 @@
 .no-underline {
     text-decoration-line:none;
 }
+
+.btn-color-allow {
+    background-color: #5DA365;
+}
+
+.btn-color-danger {
+    background-color: #D24D4D;
+}
