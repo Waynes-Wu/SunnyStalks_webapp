@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const price = document.querySelector('#price').value;
         const brand = document.querySelector('#brand').value;
         const weight = document.querySelector('#weight').value;
-        const travexp = document.querySelector('#travexp').value;
+        
 
 
         const newItem = document.createElement('div');
@@ -36,20 +36,19 @@ document.addEventListener('DOMContentLoaded', function () {
         if (existingItemCheckbox.checked) {
             newItem.dataset['id'] = id
         }
+        else{
+            newItem.dataset['id'] = 0
+        }
         newItem.dataset['item'] = itemName
         newItem.dataset['price'] = price
         newItem.dataset['brand'] = brand
         newItem.dataset['weight'] = weight
-        if (travexp == "") {
-            newItem.dataset['travexp'] = -1
-        }
 
         newItem.innerHTML = `
         <p>Item: ${itemName}
         Price: ${price}
         Brand: ${brand}
-        Weight/Volume: ${weight}
-        Travel Expenses: ${travexp}</p>`;
+        Weight/Volume: ${weight}`;
         basket.appendChild(newItem);
         resetForm();
     });
@@ -95,6 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
             searchItemInput.value = e.target.textContent;
             itemDropdown.classList.remove('show');
 
+            const idInput = document.querySelector('#id');
             const itemNameInput = document.querySelector('#item');
             const priceInput = document.querySelector('#price');
             const brandInput = document.querySelector('#brand');
@@ -105,6 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const selectedName = e.target.dataset.name;
             const selectedWeight = e.target.dataset.weight;
 
+            idInput.value = selectedItemId;
             itemNameInput.value = selectedName;
             priceInput.value = '';
             brandInput.value = selectedBrand;
@@ -118,8 +119,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.querySelector('i.fa-floppy-disk').addEventListener('click', () => {
         // send to backend
-        document.querySelectorAll('new-item').forEach(el => {
-            const itemsData = [];
+        const itemsData = [];
+        document.querySelectorAll('.new-item').forEach(el => {
             // list of dict?
             dict = {
                 'id': el.dataset.id,
@@ -127,13 +128,18 @@ document.addEventListener('DOMContentLoaded', function () {
                 'price': el.dataset.price,
                 'brand': el.dataset.brand,
                 'weight': el.dataset.weight,
-                'travexp': el.dataset.travexp
             }
             itemsData.push(dict)
         })
-        
+
+        travelExp = document.querySelector('#travexp').value
+        if (travexp == "") {
+            travelExp = -1
+        }
+        axios.defaults.headers.common['X-CSRFToken'] = csrf_token;
         axios.post(window.location.pathname, {
-            'itemList': itemsData
+            'itemList': itemsData,
+            'travelExp': travelExp
         })
             .then(function (response) {
                 console.log(response);
@@ -158,7 +164,7 @@ function disableForms() {
 }
 
 function resetForm() {
-    document.querySelectorAll('input[type="text"], input[type="number"]').forEach(input => {
+    document.querySelectorAll('input:not(#travexp):not([type="submit"])').forEach(input => {
         input.value = '';
         input.disabled = false
     });
