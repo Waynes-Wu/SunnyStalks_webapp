@@ -132,8 +132,8 @@ document.addEventListener('DOMContentLoaded', function () {
             itemsData.push(dict)
         })
 
-        travelExp = document.querySelector('#travexp').value
-        if (travexp == "") {
+        var travelExp = document.querySelector('#travexp').value
+        if (travelExp == "") {
             travelExp = -1
         }
         axios.defaults.headers.common['X-CSRFToken'] = csrf_token;
