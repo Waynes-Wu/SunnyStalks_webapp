@@ -1,3 +1,14 @@
+/* Variables */
+
+:root {
+    --color-allow: #5DA365;
+    --color-allow-hover: #407246;
+    --color-danger: #D24D4D;
+    --color-danger-hover: #a32929;
+}
+
+
+/*-----------------------------------------------------*/
 @font-face {
     font-family: Inter;
     src: url(/static/tracker/fonts/inter/Inter-V.ttf);
@@ -138,7 +149,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #5DA365;
     color: #fff;
     border-radius: 10px;
     width: 87px;
@@ -149,7 +159,6 @@
 }
 
 .fab-list i:hover {
-    background-color: #0056b3;
     cursor: pointer;
 }
 .font-mandali{
@@ -166,16 +175,18 @@
 }
 .rounded-border-groceradd{
     border-radius:40px; 
-    padding: 35px; 
-    margin: 0; 
-    position: absolute; 
-    top: 50%; 
-    left: 50%; 
-    -ms-transform: translate(-50%,-50%); 
-    transform: translate(-50%, -50%);
+    padding: 4rem 1rem; 
+    width: 50%;
+    margin: auto;
+    margin-top: 10%; 
     background-color: white;
-    width: 870px; 
-    height: 310px;
+}
+
+.rounded-border-groceradd .submit {
+    border: none;
+    border-radius: .5rem;
+    color: #FFFFFF;
+    padding: 0.5rem 1rem;
 }
 
 .rounded-border-grocerlist{
@@ -294,9 +305,17 @@
 }
 
 .btn-color-allow {
-    background-color: #5DA365;
+    background-color: var(--color-allow);
+}
+
+.btn-color-allow:hover {
+    background-color: var(--color-allow-hover);
 }
 
 .btn-color-danger {
-    background-color: #D24D4D;
+    background-color: var(--color-danger);
+}
+
+.btn-color-danger:hover {
+    background-color: var(--color-danger-hover);
 }
