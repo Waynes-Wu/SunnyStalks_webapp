@@ -91,7 +91,7 @@ def addPurchase(request, branch_id):
         branch = Branch.objects.get(pk = branch_id)
     
         # ! check datatype
-        exp = data.get('travelExp')
+        exp = float(data.get('travelExp'))
 
         purHist = PurchaseHistory(
             travel_expense = exp if exp != -1 else None,
@@ -105,14 +105,14 @@ def addPurchase(request, branch_id):
             if  itemid == 0:
                 new_item = Item(name = item.get('itemName'),
                                 brand = item.get('brand'),
-                                weight = item.get('weight'))
+                                weight = float(item.get('weight')))
                 new_item.save()
             else:
                 new_item = Item.objects.get(pk = item.get('id'))
                 
             purchase_item = PurchaseItems(  purchase = purHist,
                                             item = new_item,
-                                            price = item.get('price'))
+                                            price = float(item.get('price')))
             purchase_item.save()
         return HttpResponseRedirect(reverse('purchaseDetail', args = [purHist.id]))        
 
