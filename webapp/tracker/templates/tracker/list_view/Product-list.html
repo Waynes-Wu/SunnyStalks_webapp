@@ -11,12 +11,20 @@ Item List
 
 
 {% block contentArea %}
-
 <ul class="fab-list">
     <li>
-        <i data-action="{% url 'addProduct' %}" class="fa-solid fa-plus btn-color-allow" title="Add Grocer"></i>
+        <i data-action="{% url 'addProduct' %}" class="fa-solid fa-plus btn-color-allow" onmouseenter="Hover()" onmouseleave="Hover()"></i>
     </li>
-    </li>
+    </data>
+    <div class="popup">
+        <span class="popuptext" id="myPopup">Add<br>Product</span>
+    </div>
+    <script>
+    function Hover() {
+    var popup = document.getElementById("myPopup");
+    popup.classList.toggle("show");
+    }
+    </script>
 </ul>
 
 <div class="container rounded-border-grocerlist">
@@ -35,7 +43,7 @@ Item List
 
         <div class="grocer-details font-inter-grocerdetails">
             <div class="font-inter-grocer">
-                <a href="{% url 'productDetail' entry.item.id %}" style="color: black;">
+                <a href="{% url 'productDetail' entry.item.id %}" class="hov-title">
                     [{{ entry.item.brand|upper}}] {{ entry.item.name }}
                 </a>
             </div>

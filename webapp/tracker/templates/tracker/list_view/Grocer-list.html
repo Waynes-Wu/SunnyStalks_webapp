@@ -43,7 +43,7 @@ Grocer List
 
         <div class="grocer-details font-inter-grocerdetails">
             <div class="font-inter-grocer">
-                <a href="{% url 'grocerDetail' branch.id %}" style="color: black;">
+                <a href="{% url 'grocerDetail' branch.id %}"  class="hov-title">
                     [{{ branch.grocery_store.name|upper}}] {{ branch.address }}
                 </a>
             </div>
