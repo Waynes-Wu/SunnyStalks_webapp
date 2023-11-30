@@ -30,7 +30,7 @@
                 <div class="navbar-brand d-flex align-items-center">
                     <img src="{% static 'images/logo.jpg' %}" alt="" width="64" height="64"
                         class="d-inline-block align-text-center">
-                    <span class="font-inter-nav px-2">Sunny Stalks</span>
+                    <span class="font-inter-nav px-2 hov-title">Sunny Stalks</span>
                 </div>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -40,11 +40,11 @@
             </button>
             <div class="nav-item p-2 font-inter-nav nav-title">{% block nav %}Document{% endblock %}</div>
             <div class="d-flex flex-row d-flex flex-row align-items-center" id="navbarSupportedContent">
-                <span class="nav-item p-3 font-mandali separator"><a href="{% url 'allGrocer' %}"
+                <span class="nav-list nav-item p-3 font-mandali separator"><a href="{% url 'allGrocer' %}"
                         class="nav-button nav-link text-dark mx-2">Grocers</a></span>
-                <span class="nav-item p-3 font-mandali separator"><a href="{% url 'allItems' %}"
+                <span class="nav-list nav-item p-3 font-mandali separator"><a href="{% url 'allItems' %}"
                         class="nav-button nav-link text-dark mx-2">Products</a></span> <!-- no link yet-->
-                <span class="nav-item p-3 font-mandali"><a href="{% url 'compare' %}"
+                <span class="nav-list nav-item p-3 font-mandali"><a href="{% url 'compare' %}"
                         class="nav-button nav-link text-dark mx-2">Compare</a></span>
             </div>
         </div>

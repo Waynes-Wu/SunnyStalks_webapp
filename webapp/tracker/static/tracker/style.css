@@ -27,6 +27,18 @@
 .nav-title{
     color: #513012;
 }
+
+/* Hovers for buttons*/
+.hov-title:hover{
+    color: #513012;
+}
+.nav-list:hover{
+    background-color: #e6cba2;
+}
+/* Hovers for buttons*/
+a {
+    color: black;
+}
 .font-inter-nav{
     font-size: 36px;
     font-family: Inter;
@@ -48,6 +60,7 @@
     justify-content: center;
 }
 .font-inter-grocer{
+    color: black;
     font-size: 48px;
     line-height: 58px;
     text-align: center;
