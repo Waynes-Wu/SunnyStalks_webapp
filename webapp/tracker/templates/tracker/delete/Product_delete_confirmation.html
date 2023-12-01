@@ -10,7 +10,7 @@ Confirm Delete Product
 
 {% block contentArea %}
 <h2>Confirm Delete Product</h2>
-<p>Are you sure you want to delete {{ item.name }}?</p>
+<p>Are you sure you want to delete [{{item.brand}}] {{ item.name }}?</p>
 
 <form method="post" action="{% url 'deleteProduct' item.id %}">
     {% csrf_token %}
