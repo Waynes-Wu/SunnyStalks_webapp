@@ -47,6 +47,10 @@
     background-color: #e6cba2;
 }
 
+.compare-select:hover{
+    background-color: #745941;
+}
+
 /* Hovers for buttons*/
 a {
     color: black;
@@ -361,7 +365,6 @@ a {
     text-align: center;
 }
 
-/* Popup container - can be anything you want */
 .popup {
     position: fixed;
     bottom: 40px;
@@ -374,7 +377,6 @@ a {
     user-select: none;
 }
 
-/* The actual popup */
 .popup .popuptext {
     visibility: hidden;
     width: 119px;
@@ -411,7 +413,6 @@ a {
     animation: fadeIn 1s;
 }
 
-/* Add animation (fade in the popup) */
 @-webkit-keyframes fadeIn {
     from {
         opacity: 0;
