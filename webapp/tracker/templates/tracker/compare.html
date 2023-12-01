@@ -12,8 +12,25 @@ Compare Grocers
 {% block contentArea %}
 <div class="container-fluid rounded-border-compare">
     <!-- row for displaying the two grocers -->
-    <div>
-        <!-- need to learn what this do first -->
+    <div style="display: flex; justify-content: space-evenly;">
+        <div class="compare-branch-card">
+            <a href="{% url 'grocerDetail' branchA.id %}">
+                {% if branchA.image %}
+                <img src="{{ branchA.image.url }}" alt="" class="compare-branch-img">
+                {% else %}
+                <img src="{% static 'images/image_placeholder.png' %}" alt="" class="compare-branch-img">
+                {% endif %}
+            </a>
+        </div>
+        <div class="compare-branch-card">
+            <a href="{% url 'grocerDetail' branchB.id %}">
+                {% if branchA.image %}
+                <img src="{{ branchB.image.url }}" alt="" class="compare-branch-img">
+                {% else %}
+                <img src="{% static 'images/image_placeholder.png' %}" alt="" class="compare-branch-img">
+                {% endif %}
+            </a>
+        </div>
     </div>
     <!-- row for the selects -->
     <div style="display: flex; justify-content: space-evenly;">
