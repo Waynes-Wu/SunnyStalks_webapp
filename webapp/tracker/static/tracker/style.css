@@ -374,13 +374,11 @@ a {
 
 .compare-branch-card {
     background-color: #FDE0B6;
-    width: 34.06%;
-    height: 14.9%;
+    /* width: 34.06%;
+    height: 14.9%; */
 
 }
 .compare-branch-img{
     margin: 10px;
-    width: 24.1%;
-    height: 8.21%;
     border-radius:10px; 
 }

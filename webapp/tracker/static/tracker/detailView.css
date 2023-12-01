@@ -8,7 +8,7 @@
 }
 .outerBox {
     width: 55%;
-    height: 85vh;
+    height: auto;
     display: block;
     margin: auto;
     margin-top: 2.5%;
