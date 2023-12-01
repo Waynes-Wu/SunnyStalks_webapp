@@ -58,18 +58,17 @@ def editGrocer(request, id):
             'edit' : True
         })                                                          
 def grocerList(request):
-    branch = Branch.objects.all()
-
+    branches = Branch.objects.all()
 
     return render(request, "tracker/list_view/Grocer-list.html", {
-        'grocerlist': branch
+        'grocerlist': branches
     })
 def grocerDetail(request, id):
     branch = Branch.objects.get(pk=id)
 
     # number of visits
     visits = branch.purchases.count()
-    costs = branch.getCosts()
+    costs = branch.getAvgTravelExp()
     # first 20 items
     a = PurchaseItems.objects.filter(purchase__grocery_store = branch).order_by('-id')[:20]
     a = list(a)

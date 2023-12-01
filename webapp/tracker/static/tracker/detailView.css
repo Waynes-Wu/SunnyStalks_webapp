@@ -1,0 +1,65 @@
+.branchImg{
+    margin-right: 5%;
+    border-radius: 10px;
+}
+.info_desc{
+    width: 57%;
+    display: inline-block;
+}
+.outerBox {
+    width: 55%;
+    height: 85vh;
+    display: block;
+    margin: auto;
+    margin-top: 2.5%;
+    border-radius: 20px;
+    padding-left: 7%;
+    padding-right: 7%;
+}
+
+.info_title {
+    font-weight: bold;
+    border-bottom: 2px solid #555; /* You can adjust the border properties as needed */
+    padding-bottom: 5px; 
+}
+
+.bottomDiv{
+    border-radius: 20px;
+    background-color: #856F50;
+    height: 60%;
+}
+.entryRow{
+    border-radius: 10px;
+}
+
+.bottomDiv-caption{
+    color: white;
+    font-weight: 700;
+}
+
+
+
+@media (max-width: 1400px) {
+    .outerBox {
+        width: 70%;
+    }
+}
+
+@media (max-width: 1150px) {
+    .outerBox {
+        width: 80%;
+    }
+}
+
+@media (max-width: 800px) {
+    .outerBox {
+        width: 95%;
+    }
+}
+
+@media (min-width: 2000px) {
+    .outerBox {
+        width: 1000px;
+        height: 1110px;
+    }
+}

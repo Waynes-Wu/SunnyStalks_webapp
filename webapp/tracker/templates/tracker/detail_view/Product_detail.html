@@ -10,25 +10,53 @@ Item Profile
 {% endblock %}
 
 {% block contentArea %}
+<link rel="stylesheet" href="{% static 'tracker/detailView.css' %}">
+
 <ul class="fab-list">
     <li><i data-action = "{% url 'editProduct' item.id %}" class="fa-regular fa-pen-to-square" title = "Edit"></i></li>
     <li><i class="fa-solid fa-trash" title = "Delete"></i></li>
 </ul>
 
-<img src="" alt="">
-<div>{{ item.name }}</div>
-<div>-----------</div>
-<div>Brand: {{ item.brand }}</div>
-<div>Weight: {{ item.weight }} g</div>
-<div>Average Price {{ price_avg }} </div>
-<div>Lowest Price {{ price_min }}</div>
-<div>Times Purchased: {{ timesBought }}</div>
+<div class="bg-white outerBox">
+    <div class="d-flex justify-content-center my-3 pt-5">
+        {% if  item.image %}
+        <img class="branchImg" src="{{ item.image.url }}" alt="" class="mr-3">
+        {% else %}
+        <img class="branchImg" src="{% static 'images/image_placeholder.png' %}" alt="" class="mr-3">
+        {% endif %}
+        <div class="info_desc">
+            <div class="text-center info_title mx-2">{{ item.name }}</div>
 
-<div class="bg-gray">
-    <span class="product-caption">Notes</span>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="" class="form-label">Brand:</label>
+                    <input type="text" name="" id="" disabled class="form-control" value="{{ item.brand }}">
+                </div>
+                <div class="col-md-6"> 
+                    <label for="" class="form-label">Weight:</label>
+                    <input type="text" name="" id="" disabled class="form-control" value="{{ item.weight }} g">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="" class="form-label">Average Price:</label>
+                    <input type="text" name="" id="" disabled class="form-control" value="{{ price_avg }}">
+                </div>
+                <div class="col-md-6"> 
+                    <label for="" class="form-label">Lowest Price:</label>
+                    <input type="text" name="" id="" disabled class="form-control" value="{{ price_min }}">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="" class="form-label">Times Purchased:</label>
+                    <input type="text" name="" id="" disabled class="form-control" value="{{ timesBought }}">
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="bg-gray">
-    Price History
-</div>
+
 
 {% endblock %}

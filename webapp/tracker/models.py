@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from django.db.models import Min, Avg, Count
+from django.db.models import Min, Avg, Count, Sum
+from django.utils.functional import cached_property
 
 class User(AbstractUser):
     def __str__(self):
@@ -18,10 +19,51 @@ class Branch(models.Model):
     grocery_store = models.ForeignKey(GroceryStore, on_delete=models.CASCADE, related_name='branches')
     items = models.ManyToManyField('Item', related_name='seller', blank=True)
     image = models.ImageField(upload_to='branch_images/', blank=True, null=True)
+    def getTotalSpending(self):
+        result = self.purchases.aggregate(total_spent = Sum('itemsPurchased__price'))['total_spent']
+        if result is None:
+            result = 0
+        return result
+    def getTotalTravelCost(self):
+        result = self.purchases.aggregate(total_travel=Sum('travel_expense'))['total_travel']    
+        if result is None:
+            result = 0
+        return 
+    def getEfficiency(self):
+        # efficiency ratio
+        travelExpense = self.getTotalTravelCost()
+        if travelExpense is None or travelExpense<=0:
+            travelExpense = 1
+        return float(self.getTotalSpending()/travelExpense)
     
-    def getCosts(self):
+    def get_efficiency_range():
+        branches = Branch.objects.all()
+        efficiencies = [branch.getEfficiency() for branch in branches]
+        if not efficiencies:
+            return None, None
+        min_efficiency = float(min(efficiencies))
+        max_efficiency = float(max(efficiencies))
+        return (min_efficiency, max_efficiency)
+    
+    def getNormalizedEfficiency(self):
+        min_efficiency, max_efficiency = Branch.get_efficiency_range()
+        if min_efficiency is None or max_efficiency is None:
+            return None        
+        efficiency = self.getEfficiency()
+        normalized_efficiency = (efficiency - min_efficiency) / (max_efficiency - min_efficiency)
+        return int(normalized_efficiency*100)
+    
+    def getAvgTravelExp(self):
         average_expense = self.purchases.aggregate(avg_expense=Avg('travel_expense'))['avg_expense']
         return average_expense if average_expense is not None else "---"
+    
+    def popularity(self):
+        count = [branch.purchases.count() for branch in Branch.objects.all()]
+        maxx = max(count)
+        minn = min(count)
+        rating = (self.purchases.count() - minn) / (maxx - minn)
+        rating = rating/0.2
+        return int(rating)
     
     def __str__(self):
         return f'{self.grocery_store.name} [{self.address}]'

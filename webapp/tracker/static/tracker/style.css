@@ -13,38 +13,46 @@
     font-family: Inter;
     src: url(/static/tracker/fonts/inter/Inter-V.ttf);
 }
+
 @font-face {
     font-family: Mandali;
     src: url(/static/tracker/fonts/mandali/Mandali-Regular.ttf);
 }
-.bg-brown{
+
+.bg-brown {
     background-color: #938064;
 }
-.nav-body{
+
+.nav-body {
     background-color: #ffe1b4;
     height: 8.25%;
 }
-.nav-title{
+
+.nav-title {
     color: #513012;
 }
 
 /* Hovers for buttons*/
-.hov-title:hover{
+.hov-title:hover {
     color: #513012;
 }
-.nav-list:hover{
+
+.nav-list:hover {
     background-color: #e6cba2;
 }
+
 /* Hovers for buttons*/
 a {
     color: black;
 }
-.font-inter-nav{
+
+.font-inter-nav {
     font-size: 36px;
     font-family: Inter;
     font-weight: 800;
 }
-.font-inter-placeholder{
+
+.font-inter-placeholder {
     font-size: 13.66px;
     font-family: Inter;
     font-weight: 400;
@@ -52,16 +60,18 @@ a {
     background-color: #D9D9D9;
 
 }
-.font-inter-label{
+
+.font-inter-label {
     font-size: 16.75px;
     font-family: Inter;
     font-weight: 700;
     display: flex;
     justify-content: center;
 }
-.font-inter-grocer{
+
+.font-inter-grocer {
     color: black;
-    font-size: 48px;
+    font-size: 36px;
     line-height: 58px;
     text-align: center;
     margin: 20px 0px 20px 0px;
@@ -70,14 +80,16 @@ a {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.font-inter-grocerdetails{
+
+.font-inter-grocerdetails {
     font-size: 32px;
     font-family: Inter;
     font-weight: 700;
     line-height: 39px;
     letter-spacing: 0em;
 }
-.font-inter-popup{
+
+.font-inter-popup {
     font-size: 22px;
     font-family: Inter;
     font-weight: 400;
@@ -85,7 +97,8 @@ a {
     letter-spacing: 0em;
     text-align: center;
 }
-.font-inter-compareitem{
+
+.font-inter-compareitem {
     font-family: Inter;
     font-size: 22px;
     font-weight: 400;
@@ -93,13 +106,15 @@ a {
     letter-spacing: 0em;
 
 }
+
 /* ---------------- */
 
-.grocer-card{
+.grocer-card {
     height: 350px;
     display: flex;
 }
-.grocer-logo{
+
+.grocer-logo {
     background-color: #FDE0B6;
     border-radius: 40px 0px 0px 40px;
     display: flex;
@@ -107,18 +122,21 @@ a {
     align-items: center;
     justify-content: center;
 }
-.grocer-logo img{
+
+.grocer-logo img {
     margin: 50px;
     width: 347.13px;
     height: 265.26px;
-    border-radius:20px; 
+    border-radius: 20px;
 }
-.grocer-details{
+
+.grocer-details {
     flex: 14;
     padding: 20px;
     background-color: #FDE0B6;
 }
-.grocer-actions{
+
+.grocer-actions {
     background-color: #5B4B35;
     border-radius: 0px 40px 40px 0px;
     flex: 3;
@@ -127,17 +145,20 @@ a {
     justify-content: space-evenly;
     align-items: center;
 }
-.grocer-action-buttons{
+
+.grocer-action-buttons {
     width: 73px;
     height: 73px;
     border-radius: 10px;
 }
 
 /* -----basket----- */
-.basket, .purchases{
+.basket,
+.purchases {
     background-color: #856F50;
 }
-.bg-gray{
+
+.bg-gray {
     background-color: #D9D9D9;
 }
 
@@ -150,12 +171,15 @@ a {
     bottom: 20px;
     right: 20px;
     display: flex;
-    flex-direction: column; /* Display items vertically */
-    align-items: flex-end; /* Align to the bottom right */
+    flex-direction: column;
+    /* Display items vertically */
+    align-items: flex-end;
+    /* Align to the bottom right */
 }
 
 .fab-list li {
-    margin-bottom: 10px; /* Adjust the spacing between items */
+    margin-bottom: 10px;
+    /* Adjust the spacing between items */
 }
 
 .fab-list i {
@@ -174,24 +198,27 @@ a {
 .fab-list i:hover {
     cursor: pointer;
 }
-.font-mandali{
+
+.font-mandali {
     font-size: 24px;
     font-family: Mandali;
     font-weight: 400;
     text-align: center;
 }
-.separator{
+
+.separator {
     border-width: 0px 2px 0px 0px;
     border-style: solid;
     color: #938064;
 
 }
-.rounded-border-groceradd{
-    border-radius:40px; 
-    padding: 4rem 1rem; 
+
+.rounded-border-groceradd {
+    border-radius: 40px;
+    padding: 4rem 1rem;
     width: 50%;
     margin: auto;
-    margin-top: 10%; 
+    margin-top: 10%;
     background-color: white;
 }
 
@@ -202,17 +229,17 @@ a {
     padding: 0.5rem 1rem;
 }
 
-.rounded-border-grocerlist{
-    border-radius:40px; 
-    padding: 5%; 
+.rounded-border-grocerlist {
+    border-radius: 40px;
+    padding: 5%;
     margin-top: 48px;
     background-color: white;
     width: 1671px;
 }
 
-.rounded-border-compare{
-    border-radius:40px; 
-    padding: 5%; 
+.rounded-border-compare {
+    border-radius: 40px;
+    padding: 5%;
     margin: 63px auto;
     background-color: white;
     width: 87.03%;
@@ -223,7 +250,7 @@ a {
     width: 25.8%;
     background: #86704F;
     height: 483px;
-    border-radius:31px;
+    border-radius: 31px;
     margin: 0 2.9%;
     padding: 1% 0;
 }
@@ -232,10 +259,11 @@ a {
     width: 91.1%;
     background: white;
     height: 13.9%;
-    border-radius:13px;
+    border-radius: 13px;
     margin: 2% auto 0;
     padding: 1.38%;
 }
+
 .compare-select {
     width: 11.67%;
     height: 4.5;
@@ -263,10 +291,10 @@ a {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-  }
-  
-  /* The actual popup */
-  .popup .popuptext {
+}
+
+/* The actual popup */
+.popup .popuptext {
     visibility: hidden;
     width: 119px;
     height: 63px;
@@ -280,10 +308,10 @@ a {
     left: 50%;
     margin-left: -80px;
     box-shadow: 2px 2px 5px;
-  }
-  
-  /* Popup arrow */
-  .popup .popuptext::after {
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
     content: "";
     position: absolute;
     top: 40%;
@@ -293,28 +321,39 @@ a {
     border-style: solid;
     border-color: white transparent transparent transparent;
     rotate: 270deg;
-  }
-  /* Toggle this class - hide and show the popup */
-  .popup .show {
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
     visibility: visible;
     -webkit-animation: fadeIn 1s;
     animation: fadeIn 1s;
-  }
-  
-  /* Add animation (fade in the popup) */
-  @-webkit-keyframes fadeIn {
-    from {opacity: 0;} 
-    to {opacity: 1;}
-  }
-  
-  @keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity:1 ;}
-  }
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
 
 /*  Helpers */
 .no-underline {
-    text-decoration-line:none;
+    text-decoration-line: none;
 }
 
 .btn-color-allow {

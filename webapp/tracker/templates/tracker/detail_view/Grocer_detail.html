@@ -11,38 +11,59 @@ Grocer Profile
 {% endblock %}
 
 {% block contentArea %}
+<link rel="stylesheet" href="{% static 'tracker/detailView.css' %}">
+
+
 <ul class="fab-list">
     <li><i data-action = "{% url 'addPurchase' branch.id %}" class="fa-solid fa-bag-shopping" title = "Purchase"></i></li>
     <li><i data-action = "{% url 'editGrocer' branch.id %}" class="fa-regular fa-pen-to-square" title = "Edit"></i></li>
     <li><i class="fa-solid fa-file-export" title = "Export"></i></li>
     <li><i class="fa-solid fa-trash" title = "Delete"></i></li>
 </ul>
+<div class="bg-white outerBox">
+    
+    <div class="d-flex justify-content-center my-3 pt-5">
+        {% if  branch.image %}
+        <img class="branchImg" src="{{ branch.image.url }}" alt="" class="mr-3">
+        {% else %}
+        <img class="branchImg" src="{% static 'images/image_placeholder.png' %}" alt="" class="mr-3">
+        {% endif %}
+        <div class="info_desc">
+            <div class="text-center info_title mx-2">{{ branch.grocery_store.name }}</div>
 
-{% if  branch.image %}
-<img width="75" src="{{ branch.image.url }}" alt="">
-{% else %}
-<img width="75" src="{% static 'images/image_placeholder.png' %}" alt="">
-{% endif %}
+            <label for="" class="form-label">Branch:</label>
+            <input type="text" name="" id="" disabled class="form-control" value="{{ branch.address }}">
 
-<div>{{ branch.grocery_store.name }}</div>
-<div>-----------</div>
-<div>Branch: {{ branch.address }}</div>
-<div>Number of visits: {{ visits }}</div>
-<div>Average Travel Expenses: {{ costs }}</div>
+            <label for="" class="form-label">Number of visits:</label>
+            <input type="text" name="" id="" disabled class="form-control" value="{{ visits }}">
 
-<div class="purchases">
-    <span class="purchases-caption">Purchases</span>
-    <br>
-    {% for item in itemsHistory %}
-        <a href="{% url 'productDetail' item.item.id %}">
-            {{ item.item.brand }}
-            {{ item.price }}
-            <br>
-            {{ item.item.name }}
-            {{ item.item.weight }}
-        </a>
-        <br><br>
-    {% endfor %}
+            <label for="" class="form-label">Average Travel Expenses:</label>
+            <input type="text" name="" id="" disabled class="form-control" value="{{ costs }}">
+            
+        </div>
+    </div>
+
+    
+
+    
+    <div class="bottomDiv mt-5 px-4 py-3">
+        <div class="bottomDiv-caption mb-3">Purchases</div>
+
+        {% for item in itemsHistory %}
+        <div class="row bg-white my-2 mx-1 entryRow">       
+            <div class="row">
+                <div class="col-md-6">{{ item.item.brand }}</div>
+                <div class="col-md-6 text-end">{{ item.price }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-6"><a href="{% url 'productDetail' item.item.id %}">{{ item.item.name }}</a></div>
+                <div class="col-md-6 text-end">{{ item.item.weight }}</div>
+            </div>
+        </div>
+
+        
+        {% endfor %}
+    </div>
 </div>
-
+    
 {% endblock %}
