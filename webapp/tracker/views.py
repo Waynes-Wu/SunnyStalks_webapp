@@ -65,7 +65,7 @@ def deleteGrocer(request, id):
         branch.delete()
         return HttpResponseRedirect(reverse('allGrocer'))
 
-    return render(request, "tracker/list_view/Grocer_delete_confirmation.html", {'branch': branch}) 
+    return render(request, "tracker/delete/Grocer_delete_confirmation.html", {'branch': branch}) 
 def grocerList(request):
     branches = Branch.objects.all()
 
