@@ -1,6 +1,9 @@
 .branchImg{
     margin-right: 5%;
     border-radius: 10px;
+    height: 100%;
+    width: 30%;
+
 }
 .info_desc{
     width: 57%;
