@@ -95,6 +95,25 @@ a {
     letter-spacing: 0em;
 }
 
+.font-inter-compare {
+    font-size: 14.71px;
+    font-family: Inter;
+    font-weight: 700;
+    line-height: 17.81px;
+    letter-spacing: 0em;
+}
+
+.font-inter-compare-grocer {
+    font-size: 22.07px;
+    line-height: 26.71px;
+    text-align: center;
+    margin: 10px 0px 10px 0px;
+    white-space: nowrap;
+    width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .font-inter-popup {
     font-size: 22px;
     font-family: Inter;
@@ -398,14 +417,16 @@ a {
 
 .compare-branch-card {
     background-color: #FDE0B6;
-    width: 34.06%;
-    height: 14.9%;
-
+    width: 39.14%;
+    height: 18.06%;
+    border-radius:15px;
+    display: flex;
+    justify-content: space-evenly;
 }
 .compare-branch-img{
     margin: 10px;
-    width: 24.1%;
-    height: 8.21%;
+    width: 157.65px;
+    height: 121.97px;
     border-radius:10px; 
 }
 
