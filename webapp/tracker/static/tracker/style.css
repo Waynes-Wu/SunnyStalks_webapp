@@ -5,6 +5,10 @@
     --color-allow-hover: #407246;
     --color-danger: #D24D4D;
     --color-danger-hover: #a32929;
+    --color-warning: #FFA621;
+    --color-warning-hover: #875810;
+    --color-export: #4B4A96;
+    --color-export-hover: #313061;
 }
 
 
@@ -26,6 +30,8 @@
 .nav-body {
     background-color: #ffe1b4;
     height: 8.25%;
+    z-index: 2;
+    filter: drop-shadow(5px 5px 5px #0006);
 }
 
 .nav-title {
@@ -175,6 +181,8 @@ a {
     /* Display items vertically */
     align-items: flex-end;
     /* Align to the bottom right */
+    z-index: 1;
+    filter: drop-shadow(5px 5px 5px #0006);
 }
 
 .fab-list li {
@@ -233,8 +241,8 @@ a {
     border-radius: 40px;
     padding: 5%;
     margin-top: 48px;
-    background-color: white;
-    width: 1671px;
+    background-color: white;    
+    filter: drop-shadow(5px 5px 5px #0006);
 }
 
 .rounded-border-compare {
@@ -372,6 +380,22 @@ a {
     background-color: var(--color-danger-hover);
 }
 
+.btn-color-warning {
+    background-color: var(--color-warning);
+}
+
+.btn-color-warning:hover {
+    background-color: var(--color-warning-hover);
+}
+
+.btn-color-export {
+    background-color: var(--color-export);
+}
+
+.btn-color-export:hover {
+    background-color: var(--color-export-hover);
+}
+
 .compare-branch-card {
     background-color: #FDE0B6;
     width: 34.06%;
@@ -383,4 +407,8 @@ a {
     width: 24.1%;
     height: 8.21%;
     border-radius:10px; 
+}
+
+.drop-shadow {
+    filter: drop-shadow(5px 5px 5px #0006);
 }
