@@ -368,8 +368,8 @@ a {
 
 .popup {
     position: fixed;
-    bottom: 40px;
-    right: 180px;
+    bottom: 25px;
+    right: 150px;
     display: inline-block;
     cursor: pointer;
     -webkit-user-select: none;
