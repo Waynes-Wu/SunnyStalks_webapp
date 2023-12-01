@@ -17,7 +17,17 @@ Add Grocer
 
 {% if edit %}
 <ul class="fab-list">
-    <li><i class="fa-regular fa-floppy-disk btn-color-allow" title = "Save"></i></li>
+    <li><i class="fa-regular fa-floppy-disk btn-color-allow" title = "Save" onmouseenter="Hover()" onmouseleave="Hover()"></i></li>
+
+    <div class="popup" style="bottom: 24px; right: 150px;">
+        <span class="popuptext" id="myPopup">Save<br>Changes</span>
+    </div>
+    <script>
+        function Hover() {
+            var popup = document.getElementById("myPopup");
+            popup.classList.toggle("show");
+        }
+    </script>
 </ul>
 {% endif %}
 
