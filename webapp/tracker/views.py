@@ -199,11 +199,13 @@ def addProduct(request):
         item_brand = request.POST.get('item_brand')
         item_weight = request.POST.get('item_weight')
         item_image = request.FILES.get('item_image')
+        item_notes = request.POST.get('item_notes')
 
         newItem, created = Item.objects.get_or_create(
                                                     name=item_name, 
                                                     brand=item_brand, 
                                                     weight=item_weight, 
+                                                    notes=item_notes,
                                                     )
         if created:
             newItem.image = item_image
@@ -225,12 +227,14 @@ def editProduct(request, id):
         item_weight = request.POST.get('item_weight')
         item_image = request.FILES.get('item_image')
         item_id = request.POST.get('id')
+        item_notes = request.POST.get('item_notes')
 
         item = Item.objects.get(pk = item_id)
         # * required fields 
         item.name = item_name
         item.brand = item_brand
         item.weight = item_weight
+        item.notes = item_notes
 
         # * optional fields
         if item_image is not None:

@@ -59,6 +59,10 @@ Add Grocer
                     <input type="file" name="item_image" id="item_image" class="form-control">
                 </div>
                 <div class="mb-3">
+                    <label for="item_notes" class="form-label">Notes:</label>
+                    <textarea name="item_notes" id="item_notes" class="form-control" style="width: 80%; resize: none;">{{ item.notes }}</textarea>
+                </div>
+                <div class="mb-3">
                     <input type="submit" value="Submit">
                 </div>
             </form>
