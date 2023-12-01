@@ -4,6 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from tracker.models import *
 from django.db.models import Min, Avg, Count
+from django.shortcuts import get_object_or_404
 
 def index(request):
     return render(request, "tracker/index.html", {})
@@ -56,7 +57,15 @@ def editGrocer(request, id):
         return render(request, "tracker/add_edit/Grocer-add_edit.html", {
             'branch' : toBeEdited,
             'edit' : True
-        })                                                          
+        })                
+def deleteGrocer(request, id):
+    branch = get_object_or_404(Branch, pk=id)
+
+    if request.method == 'POST':
+        branch.delete()
+        return HttpResponseRedirect(reverse('allGrocer'))
+
+    return render(request, "tracker/list_view/Grocer_delete_confirmation.html", {'branch': branch}) 
 def grocerList(request):
     branches = Branch.objects.all()
 

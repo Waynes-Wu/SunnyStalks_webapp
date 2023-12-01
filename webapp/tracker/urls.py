@@ -9,6 +9,7 @@ urlpatterns = [
     path("grocer/edit/<int:id>",views.editGrocer, name='editGrocer'),
     path("grocer/all",views.grocerList, name='allGrocer'),
     path("grocer/<int:id>",views.grocerDetail, name='grocerDetail'),
+    path("grocer/delete/<int:id>/", views.deleteGrocer, name='deleteGrocer'),
 
     path("purchase/add/<int:branch_id>",views.addPurchase, name='addPurchase'),
     path("purchase/<int:id>",views.purchaseDetail, name='purchaseDetail'),
@@ -18,6 +19,7 @@ urlpatterns = [
     path("item/edit/<int:id>",views.editProduct, name='editProduct'),
     path("item/all",views.itemList, name='allItems'),
     path("item/<int:id>",views.productDetail, name='productDetail'),
+    
     
 ]
 
