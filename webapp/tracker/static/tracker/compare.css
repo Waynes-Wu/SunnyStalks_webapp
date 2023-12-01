@@ -1,0 +1,12 @@
+.info{
+    display: block;
+}
+.compare-branch-card a{
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+}
+.compare-branch-card img{
+    width: 100%;
+    height: auto;
+}

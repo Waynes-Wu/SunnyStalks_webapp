@@ -186,7 +186,7 @@ def compareGrocers(request):
     # price
     # weight
     return render(request, "tracker/compare.html", {
-        'branchA' : branchA,
+        'branches' : Branch.objects.all(),
         'branchB' : branchB,
         'common': common_with_prices,
         'diffA': diffA_with_prices,
