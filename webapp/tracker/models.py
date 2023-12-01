@@ -19,6 +19,18 @@ class Branch(models.Model):
     grocery_store = models.ForeignKey(GroceryStore, on_delete=models.CASCADE, related_name='branches')
     items = models.ManyToManyField('Item', related_name='seller', blank=True)
     image = models.ImageField(upload_to='branch_images/', blank=True, null=True)
+    def serialize(self):
+        
+        if bool(self.image):
+            image = self.image.url
+        else:
+            image = "/static/images/image_placeholder.png"
+        return{
+            'address':self.address,
+            'name': self.grocery_store.name,
+            'items': list(self.items.all()),
+            'image': image
+        }
     def getTotalSpending(self):
         result = self.purchases.aggregate(total_spent = Sum('itemsPurchased__price'))['total_spent']
         if result is None:

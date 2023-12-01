@@ -14,6 +14,9 @@ urlpatterns = [
     path("purchase/add/<int:branch_id>",views.addPurchase, name='addPurchase'),
     path("purchase/<int:id>",views.purchaseDetail, name='purchaseDetail'),
     path("compare",views.compareGrocers, name='compare'),
+    
+    path("api/compare",views.compare_api, name='api_compare'),
+    path("api/branch",views.branch_api, name='api_branch'),
 
     path("item/add",views.addProduct, name='addProduct'),
     path("item/edit/<int:id>",views.editProduct, name='editProduct'),

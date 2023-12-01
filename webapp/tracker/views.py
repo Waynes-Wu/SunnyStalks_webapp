@@ -5,6 +5,7 @@ from django.urls import reverse
 from tracker.models import *
 from django.db.models import Min, Avg, Count
 from django.shortcuts import get_object_or_404
+from django.http import JsonResponse
 
 def index(request):
     return render(request, "tracker/index.html", {})
@@ -141,57 +142,72 @@ def purchaseDetail(request, id):
 
 
 def compareGrocers(request):
-    branchA = Branch.objects.get(pk = 2)
-    branchB = Branch.objects.get(pk = 6)
-
-    # queryset of unique item_id
-    items_branchA = set(PurchaseItems.objects.filter(purchase__grocery_store=branchA).values_list('item', flat=True))
-    items_branchB = set(PurchaseItems.objects.filter(purchase__grocery_store=branchB).values_list('item', flat=True))
-
-    # set of categorized item_id
-    common = items_branchA.intersection(items_branchB)
-    diffA = items_branchA.difference(items_branchB)
-    diffB = items_branchB.difference(items_branchA)
-
-    common_with_prices = []
-    for item in common:
-        it = Item.objects.get(pk = item)
-        price_A = it.getLatestPrice(branchA)
-        price_B = it.getLatestPrice(branchB)
-        common_with_prices.append({
-            'item' : it,
-            'price_A' : price_A,
-            'price_B': price_B
-        })
-
-    diffA_with_prices = []
-    for item in diffA:
-        it = Item.objects.get(pk = item)
-        price_A = it.getLatestPrice(branchA)
-        diffA_with_prices.append({
-            'item' : it,
-            'price' : price_A,
-        })
-    diffB_with_prices = []
-    for item in diffB:
-        it = Item.objects.get(pk = item)
-        price_B = it.getLatestPrice(branchB)
-        diffB_with_prices.append({
-            'item' : it,
-            'price' : price_B,
-        })
-
-    # brand
-    # item name
-    # price
-    # weight
     return render(request, "tracker/compare.html", {
         'branches' : Branch.objects.all(),
-        'branchB' : branchB,
-        'common': common_with_prices,
-        'diffA': diffA_with_prices,
-        'diffB': diffB_with_prices
     })
+
+
+def compare_api(request):
+    if request.method == 'GET':
+        grocer1_id = request.GET.get('grocer1_id')
+        grocer2_id = request.GET.get('grocer2_id')
+        
+        branchA = Branch.objects.get(pk = grocer1_id)
+        branchB = Branch.objects.get(pk = grocer2_id)
+
+        # queryset of unique item_id
+        items_branchA = set(PurchaseItems.objects.filter(purchase__grocery_store=branchA).values_list('item', flat=True))
+        items_branchB = set(PurchaseItems.objects.filter(purchase__grocery_store=branchB).values_list('item', flat=True))
+        
+        common = items_branchA.intersection(items_branchB)
+        diffA = items_branchA.difference(items_branchB)
+        diffB = items_branchB.difference(items_branchA)
+
+        common_with_prices = []
+        for item in common:
+            it = Item.objects.get(pk = item)
+            price_A = it.getLatestPrice(branchA)
+            price_B = it.getLatestPrice(branchB)
+            common_with_prices.append({
+                'item' : {'name':it.name,
+                          'brand': it.brand},
+                'price_A' : price_A,
+                'price_B': price_B
+            })
+
+        diffA_with_prices = []
+        for item in diffA:
+            it = Item.objects.get(pk = item)
+            price_A = it.getLatestPrice(branchA)
+            diffA_with_prices.append({
+                'item' : {'name':it.name,
+                          'brand': it.brand},
+                'price' : price_A,
+            })
+        diffB_with_prices = []
+        for item in diffB:
+            it = Item.objects.get(pk = item)
+            price_B = it.getLatestPrice(branchB)
+            diffB_with_prices.append({
+                'item' : {'name':it.name,
+                          'brand': it.brand},
+                'price' : price_B,
+            })
+        
+        comparison_data = {
+            'common_with_prices': common_with_prices,
+            'diffA_with_prices': diffA_with_prices,
+            'diffB_with_prices':diffB_with_prices,
+        }
+        
+        return JsonResponse(comparison_data)
+
+def branch_api(request):
+    if request.method == 'GET':
+        branch = request.GET.get('id')
+        branch = Branch.objects.get(pk = branch)    
+        return JsonResponse(branch.serialize())
+
 
 def addProduct(request):
     if request.method == 'POST':
