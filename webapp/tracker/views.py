@@ -246,6 +246,15 @@ def editProduct(request, id):
             'edit' : True
         })   
     
+
+def deleteProduct(request, id):
+    product = get_object_or_404(Item, pk=id)
+
+    if request.method == 'POST':
+        product.delete()
+        return HttpResponseRedirect(reverse('allItems'))
+    return render(request, "tracker/delete/Product_delete_confirmation.html", {'item': product})
+
 def itemList(request):
     item = Item.objects.all()
     items = []

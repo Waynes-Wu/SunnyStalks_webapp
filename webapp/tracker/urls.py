@@ -19,7 +19,7 @@ urlpatterns = [
     path("item/edit/<int:id>",views.editProduct, name='editProduct'),
     path("item/all",views.itemList, name='allItems'),
     path("item/<int:id>",views.productDetail, name='productDetail'),
-    
+    path("item/delete/<int:id>", views.deleteProduct, name='deleteProduct'),
     
 ]
 
