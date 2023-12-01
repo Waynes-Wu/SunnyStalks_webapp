@@ -19,11 +19,72 @@ Compare Grocers
             </a>
         </div>
             </a>
+            <div class="font-inter-compare">
+                <div class="font-inter-compare-grocer">
+                    <a href="{% url 'grocerDetail' branchA.id %}" class="hov-title">
+                        [{{ branchA.grocery_store.name|upper}}] {{ branchA.address }}
+                    </a>
+                </div>
+                <div style="background-color: black; height: 1px; margin-bottom: 10px;"></div>
+    
+                <div>Overall Cost:
+                    {% if branchA.getTotalSpending %}
+                        {{ branchA.getTotalSpending }}
+                    {% else %}
+                    ---
+                    {% endif %}</div>
+                <div>Average Travel Cost: {{branchA.getAvgTravelExp}} </div>
+                <div>Efficiency:
+                    {% if branchA.getNormalizedEfficiency is not None and branchA.getNormalizedEfficiency != 0 %}
+                        {{ branchA.getNormalizedEfficiency }}%
+                    {% else %}
+                    ---
+                    {% endif %}
+                </div>
+                <div>Popularity: 
+                    {% if branchA.popularity is not None %}
+                        {{ branchA.popularity}}/5
+                    {% else %}
+                        ---
+                    {% endif %}
+                </div>
+            </div>
         </div>
+        
         <div class="compare-branch-card">
             <a href="">
                 <img src="{% static 'images/image_placeholder.png' %}" alt="" class="compare-branch-img">
             </a>
+            <div class="font-inter-compare">
+                <div class="font-inter-compare-grocer">
+                    <a href="{% url 'grocerDetail' branchB.id %}" class="hov-title">
+                        [{{ branchB.grocery_store.name|upper}}] {{ branchB.address }}
+                    </a>
+                </div>
+                <div style="background-color: black; height: 1px; margin-bottom: 10px;"></div>
+    
+                <div>Overall Cost:
+                    {% if branchB.getTotalSpending %}
+                        {{ branchB.getTotalSpending }}
+                    {% else %}
+                    ---
+                    {% endif %}</div>
+                <div>Average Travel Cost: {{branchB.getAvgTravelExp}} </div>
+                <div>Efficiency:
+                    {% if branchB.getNormalizedEfficiency is not None and branchB.getNormalizedEfficiency != 0 %}
+                        {{ branchB.getNormalizedEfficiency }}%
+                    {% else %}
+                    ---
+                    {% endif %}
+                </div>
+                <div>Popularity: 
+                    {% if branchB.popularity is not None %}
+                        {{ branchB.popularity}}/5
+                    {% else %}
+                        ---
+                    {% endif %}
+                </div>
+            </div>
         </div>
     </div>
     <!-- row for the selects -->

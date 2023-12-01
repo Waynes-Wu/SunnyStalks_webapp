@@ -4,6 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from tracker.models import *
 from django.db.models import Min, Avg, Count
+from django.shortcuts import get_object_or_404
 
 def index(request):
     return render(request, "tracker/index.html", {})
@@ -56,7 +57,15 @@ def editGrocer(request, id):
         return render(request, "tracker/add_edit/Grocer-add_edit.html", {
             'branch' : toBeEdited,
             'edit' : True
-        })                                                          
+        })                
+def deleteGrocer(request, id):
+    branch = get_object_or_404(Branch, pk=id)
+
+    if request.method == 'POST':
+        branch.delete()
+        return HttpResponseRedirect(reverse('allGrocer'))
+
+    return render(request, "tracker/delete/Grocer_delete_confirmation.html", {'branch': branch}) 
 def grocerList(request):
     branches = Branch.objects.all()
 
@@ -190,11 +199,13 @@ def addProduct(request):
         item_brand = request.POST.get('item_brand')
         item_weight = request.POST.get('item_weight')
         item_image = request.FILES.get('item_image')
+        item_notes = request.POST.get('item_notes')
 
         newItem, created = Item.objects.get_or_create(
                                                     name=item_name, 
                                                     brand=item_brand, 
                                                     weight=item_weight, 
+                                                    notes=item_notes,
                                                     )
         if created:
             newItem.image = item_image
@@ -216,12 +227,14 @@ def editProduct(request, id):
         item_weight = request.POST.get('item_weight')
         item_image = request.FILES.get('item_image')
         item_id = request.POST.get('id')
+        item_notes = request.POST.get('item_notes')
 
         item = Item.objects.get(pk = item_id)
         # * required fields 
         item.name = item_name
         item.brand = item_brand
         item.weight = item_weight
+        item.notes = item_notes
 
         # * optional fields
         if item_image is not None:
@@ -237,6 +250,15 @@ def editProduct(request, id):
             'edit' : True
         })   
     
+
+def deleteProduct(request, id):
+    product = get_object_or_404(Item, pk=id)
+
+    if request.method == 'POST':
+        product.delete()
+        return HttpResponseRedirect(reverse('allItems'))
+    return render(request, "tracker/delete/Product_delete_confirmation.html", {'item': product})
+
 def itemList(request):
     item = Item.objects.all()
     items = []

@@ -1,6 +1,9 @@
 .branchImg{
     margin-right: 5%;
     border-radius: 10px;
+    height: 100%;
+    width: 30%;
+
 }
 .info_desc{
     width: 57%;
@@ -8,13 +11,15 @@
 }
 .outerBox {
     width: 55%;
-    height: auto;
-    display: block;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
     margin: auto;
     margin-top: 2.5%;
     border-radius: 20px;
     padding-left: 7%;
     padding-right: 7%;
+    filter: drop-shadow(5px 5px 5px #0006);
 }
 
 .info_title {
@@ -26,10 +31,11 @@
 .bottomDiv{
     border-radius: 20px;
     background-color: #856F50;
-    height: 60%;
+    margin-bottom: 4rem;
 }
 .entryRow{
     border-radius: 10px;
+    padding: 0.75rem 0.5rem;
 }
 
 .bottomDiv-caption{

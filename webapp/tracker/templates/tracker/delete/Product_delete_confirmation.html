@@ -1,0 +1,20 @@
+{% extends 'tracker/base.html' %}
+
+{% block title %}
+Confirm Delete Product
+{% endblock %}
+
+{% block nav %}
+Confirm Delete Product
+{% endblock %}
+
+{% block contentArea %}
+<h2>Confirm Delete Product</h2>
+<p>Are you sure you want to delete [{{item.brand}}] {{ item.name }}?</p>
+
+<form method="post" action="{% url 'deleteProduct' item.id %}">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="{% url 'allItems' %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}
