@@ -16,6 +16,7 @@
     border-radius: 20px;
     padding-left: 7%;
     padding-right: 7%;
+    filter: drop-shadow(5px 5px 5px #0006);
 }
 
 .info_title {
