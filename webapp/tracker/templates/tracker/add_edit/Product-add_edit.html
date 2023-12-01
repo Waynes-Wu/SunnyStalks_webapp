@@ -25,9 +25,9 @@ Add Grocer
 <div class="">
     <div class="product-add add-edit main-container d-flex justify-content-evenly align-items-center container-lg">
         {% if item.image %}
-            <img class="product-add add-edit preview-img" src="{{ item.image.url }}" alt="">
+            <img class="preview-img" src="{{ item.image.url }}" alt="">
         {% else %}
-            <img class="product-add add-edit preview-img" src="{% static 'images/image_placeholder.png' %}" alt="">
+            <img class="preview-img" src="{% static 'images/image_placeholder.png' %}" alt="">
         {% endif %}
 
         <div class="product-add add-edit form-container">

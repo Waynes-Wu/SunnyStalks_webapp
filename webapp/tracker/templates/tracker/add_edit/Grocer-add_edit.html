@@ -24,18 +24,14 @@ Add Grocer
 
 
 <div class="">
-    <div class="d-flex justify-content-evenly container-lg rounded-border-groceradd">
-
-        <div class="mb-2">
+    <div class="grocer-add add-edit main-container d-flex justify-content-evenly container-lg rounded-border-groceradd">
         {% if  branch.image %}
-            <img width="227px" height="175px" src="{{ branch.image.url }}" alt="">
+            <img class="preview-img" src="{{ branch.image.url }}" alt="">
         {% else %}
-            <img width="227px" height="175px" src="{% static 'images/image_placeholder.png' %}" alt="">
+            <img class="preview-img" src="{% static 'images/image_placeholder.png' %}" alt="">
         {% endif %}
-        </div>
 
-        <div>
-
+        <div class="form-container">
             <form action="{{ request.path }}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
 
@@ -44,7 +40,7 @@ Add Grocer
                 {% endif%}
 
                 <div class="mb-3">
-                    <input type="text" name="store_name" id="store_name" class="form-control font-inter-placeholder" value="{{ branch.grocery_store.name }}" placeholder="Store Name" style="font-size: 25.13px;">
+                    <input type="text" name="store_name" id="store_name" class="form-control font-inter-placeholder" value="{{ branch.grocery_store.name }}" placeholder="Store Name">
                 </div>
                 <div class="mb-3">
                     <label for="branch_address" class="form-label font-inter-label">Branch Address:</label>
