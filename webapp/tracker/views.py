@@ -106,13 +106,14 @@ def addPurchase(request, branch_id):
             travel_expense = exp if exp != -1 else None,
             grocery_store = branch
         )
-        purHist.save()
         
+        purHist.save()
         for item in item_data:
-            itemid = item.get('id')
+            
+            itemid = int(item.get('id'))            
             new_item = ''
             if  itemid == 0:
-                new_item = Item(name = item.get('itemName'),
+                new_item = Item(name = item.get('itemname'),
                                 brand = item.get('brand'),
                                 weight = float(item.get('weight')))
                 new_item.save()

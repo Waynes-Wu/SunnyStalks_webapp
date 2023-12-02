@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // list of dict?
             dict = {
                 'id': el.dataset.id,
-                'itemname': el.dataset.itemName,
+                'itemname': el.dataset.item,
                 'price': el.dataset.price,
                 'brand': el.dataset.brand,
                 'weight': el.dataset.weight,
